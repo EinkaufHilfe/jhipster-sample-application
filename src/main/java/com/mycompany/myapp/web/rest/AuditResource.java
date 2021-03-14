@@ -2,7 +2,6 @@ package com.mycompany.myapp.web.rest;
 
 import com.mycompany.myapp.service.AuditEventService;
 import io.github.jhipster.web.util.PaginationUtil;
-import io.github.jhipster.web.util.ResponseUtil;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -71,6 +70,6 @@ public class AuditResource {
      */
     @GetMapping("/{id:.+}")
     public ResponseEntity<AuditEvent> get(@PathVariable Long id) {
-        return ResponseUtil.wrapOrNotFound(auditEventService.find(id));
+        return ResponseEntity.ok(auditEventService.find(id));
     }
 }

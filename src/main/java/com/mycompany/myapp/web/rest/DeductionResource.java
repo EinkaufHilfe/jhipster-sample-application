@@ -3,20 +3,18 @@ package com.mycompany.myapp.web.rest;
 import com.mycompany.myapp.domain.Deduction;
 import com.mycompany.myapp.repository.DeductionRepository;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
-
-import io.github.jhipster.web.util.HeaderUtil;
+import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Optional;
 
 /**
  * REST controller for managing {@link com.mycompany.myapp.domain.Deduction}.
@@ -25,18 +23,16 @@ import java.util.Optional;
 @RequestMapping("/api")
 @Transactional
 public class DeductionResource {
-
     private final Logger log = LoggerFactory.getLogger(DeductionResource.class);
 
     private static final String ENTITY_NAME = "deduction";
 
-    @Value("${jhipster.clientApp.name}")
-    private String applicationName;
-
     private final DeductionRepository deductionRepository;
+    private HeaderUtil headerUtil;
 
-    public DeductionResource(DeductionRepository deductionRepository) {
+    public DeductionResource(DeductionRepository deductionRepository, HeaderUtil headerUtil) {
         this.deductionRepository = deductionRepository;
+        this.headerUtil = headerUtil;
     }
 
     /**
@@ -53,8 +49,9 @@ public class DeductionResource {
             throw new BadRequestAlertException("A new deduction cannot already have an ID", ENTITY_NAME, "idexists");
         }
         Deduction result = deductionRepository.save(deduction);
-        return ResponseEntity.created(new URI("/api/deductions/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
+        return ResponseEntity
+            .created(new URI("/api/deductions/" + result.getId()))
+            .headers(headerUtil.createEntityCreationAlert(true, ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
 
@@ -74,8 +71,9 @@ public class DeductionResource {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
         Deduction result = deductionRepository.save(deduction);
-        return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, deduction.getId().toString()))
+        return ResponseEntity
+            .ok()
+            .headers(headerUtil.createEntityUpdateAlert(true, ENTITY_NAME, deduction.getId().toString()))
             .body(result);
     }
 
@@ -113,6 +111,6 @@ public class DeductionResource {
     public ResponseEntity<Void> deleteDeduction(@PathVariable Long id) {
         log.debug("REST request to delete Deduction : {}", id);
         deductionRepository.deleteById(id);
-        return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
+        return ResponseEntity.noContent().headers(headerUtil.createEntityDeletionAlert(true, ENTITY_NAME, id.toString())).build();
     }
 }

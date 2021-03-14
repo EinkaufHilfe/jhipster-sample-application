@@ -1,7 +1,7 @@
 package com.mycompany.myapp.web.rest.errors;
 
+import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import io.github.jhipster.config.JHipsterConstants;
-import io.github.jhipster.web.util.HeaderUtil;
 import java.net.URI;
 import java.util.Arrays;
 import java.util.Collection;
@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.servlet.http.HttpServletRequest;
+import jdk.javadoc.internal.doclets.formats.html.markup.Head;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -47,9 +48,11 @@ public class ExceptionTranslator implements ProblemHandling, SecurityAdviceTrait
     private String applicationName;
 
     private final Environment env;
+    private final HeaderUtil headerUtil;
 
-    public ExceptionTranslator(Environment env) {
+    public ExceptionTranslator(Environment env, HeaderUtil headerUtil) {
         this.env = env;
+        this.headerUtil = headerUtil;
     }
 
     /**
@@ -114,7 +117,7 @@ public class ExceptionTranslator implements ProblemHandling, SecurityAdviceTrait
         return create(
             problem,
             request,
-            HeaderUtil.createFailureAlert(applicationName, true, problem.getEntityName(), problem.getErrorKey(), problem.getMessage())
+            headerUtil.createFailureAlert(true, problem.getEntityName(), problem.getErrorKey(), problem.getMessage())
         );
     }
 
@@ -127,7 +130,7 @@ public class ExceptionTranslator implements ProblemHandling, SecurityAdviceTrait
         return create(
             problem,
             request,
-            HeaderUtil.createFailureAlert(applicationName, true, problem.getEntityName(), problem.getErrorKey(), problem.getMessage())
+            headerUtil.createFailureAlert(true, problem.getEntityName(), problem.getErrorKey(), problem.getMessage())
         );
     }
 
@@ -141,11 +144,7 @@ public class ExceptionTranslator implements ProblemHandling, SecurityAdviceTrait
 
     @ExceptionHandler
     public ResponseEntity<Problem> handleBadRequestAlertException(BadRequestAlertException ex, NativeWebRequest request) {
-        return create(
-            ex,
-            request,
-            HeaderUtil.createFailureAlert(applicationName, true, ex.getEntityName(), ex.getErrorKey(), ex.getMessage())
-        );
+        return create(ex, request, headerUtil.createFailureAlert(true, ex.getEntityName(), ex.getErrorKey(), ex.getMessage()));
     }
 
     @ExceptionHandler

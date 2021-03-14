@@ -3,20 +3,18 @@ package com.mycompany.myapp.web.rest;
 import com.mycompany.myapp.domain.PriceList;
 import com.mycompany.myapp.repository.PriceListRepository;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
-
-import io.github.jhipster.web.util.HeaderUtil;
+import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Optional;
 
 /**
  * REST controller for managing {@link com.mycompany.myapp.domain.PriceList}.
@@ -25,18 +23,16 @@ import java.util.Optional;
 @RequestMapping("/api")
 @Transactional
 public class PriceListResource {
-
     private final Logger log = LoggerFactory.getLogger(PriceListResource.class);
 
     private static final String ENTITY_NAME = "priceList";
 
-    @Value("${jhipster.clientApp.name}")
-    private String applicationName;
-
     private final PriceListRepository priceListRepository;
+    private HeaderUtil headerUtil;
 
-    public PriceListResource(PriceListRepository priceListRepository) {
+    public PriceListResource(PriceListRepository priceListRepository, HeaderUtil headerUtil) {
         this.priceListRepository = priceListRepository;
+        this.headerUtil = headerUtil;
     }
 
     /**
@@ -53,8 +49,9 @@ public class PriceListResource {
             throw new BadRequestAlertException("A new priceList cannot already have an ID", ENTITY_NAME, "idexists");
         }
         PriceList result = priceListRepository.save(priceList);
-        return ResponseEntity.created(new URI("/api/price-lists/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
+        return ResponseEntity
+            .created(new URI("/api/price-lists/" + result.getId()))
+            .headers(headerUtil.createEntityCreationAlert(true, ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
 
@@ -74,8 +71,9 @@ public class PriceListResource {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
         PriceList result = priceListRepository.save(priceList);
-        return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, priceList.getId().toString()))
+        return ResponseEntity
+            .ok()
+            .headers(headerUtil.createEntityUpdateAlert(true, ENTITY_NAME, priceList.getId().toString()))
             .body(result);
     }
 
@@ -113,6 +111,6 @@ public class PriceListResource {
     public ResponseEntity<Void> deletePriceList(@PathVariable Long id) {
         log.debug("REST request to delete PriceList : {}", id);
         priceListRepository.deleteById(id);
-        return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
+        return ResponseEntity.noContent().headers(headerUtil.createEntityDeletionAlert(true, ENTITY_NAME, id.toString())).build();
     }
 }

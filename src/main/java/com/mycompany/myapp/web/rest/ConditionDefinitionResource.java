@@ -3,20 +3,18 @@ package com.mycompany.myapp.web.rest;
 import com.mycompany.myapp.domain.ConditionDefinition;
 import com.mycompany.myapp.repository.ConditionDefinitionRepository;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
-
-import io.github.jhipster.web.util.HeaderUtil;
+import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Optional;
 
 /**
  * REST controller for managing {@link com.mycompany.myapp.domain.ConditionDefinition}.
@@ -25,18 +23,15 @@ import java.util.Optional;
 @RequestMapping("/api")
 @Transactional
 public class ConditionDefinitionResource {
-
     private final Logger log = LoggerFactory.getLogger(ConditionDefinitionResource.class);
 
     private static final String ENTITY_NAME = "conditionDefinition";
-
-    @Value("${jhipster.clientApp.name}")
-    private String applicationName;
-
     private final ConditionDefinitionRepository conditionDefinitionRepository;
+    private HeaderUtil headerUtil;
 
-    public ConditionDefinitionResource(ConditionDefinitionRepository conditionDefinitionRepository) {
+    public ConditionDefinitionResource(ConditionDefinitionRepository conditionDefinitionRepository, HeaderUtil headerUtil) {
         this.conditionDefinitionRepository = conditionDefinitionRepository;
+        this.headerUtil = headerUtil;
     }
 
     /**
@@ -47,14 +42,16 @@ public class ConditionDefinitionResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/condition-definitions")
-    public ResponseEntity<ConditionDefinition> createConditionDefinition(@RequestBody ConditionDefinition conditionDefinition) throws URISyntaxException {
+    public ResponseEntity<ConditionDefinition> createConditionDefinition(@RequestBody ConditionDefinition conditionDefinition)
+        throws URISyntaxException {
         log.debug("REST request to save ConditionDefinition : {}", conditionDefinition);
         if (conditionDefinition.getId() != null) {
             throw new BadRequestAlertException("A new conditionDefinition cannot already have an ID", ENTITY_NAME, "idexists");
         }
         ConditionDefinition result = conditionDefinitionRepository.save(conditionDefinition);
-        return ResponseEntity.created(new URI("/api/condition-definitions/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
+        return ResponseEntity
+            .created(new URI("/api/condition-definitions/" + result.getId()))
+            .headers(headerUtil.createEntityCreationAlert(true, ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
 
@@ -68,14 +65,16 @@ public class ConditionDefinitionResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/condition-definitions")
-    public ResponseEntity<ConditionDefinition> updateConditionDefinition(@RequestBody ConditionDefinition conditionDefinition) throws URISyntaxException {
+    public ResponseEntity<ConditionDefinition> updateConditionDefinition(@RequestBody ConditionDefinition conditionDefinition)
+        throws URISyntaxException {
         log.debug("REST request to update ConditionDefinition : {}", conditionDefinition);
         if (conditionDefinition.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
         ConditionDefinition result = conditionDefinitionRepository.save(conditionDefinition);
-        return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, conditionDefinition.getId().toString()))
+        return ResponseEntity
+            .ok()
+            .headers(headerUtil.createEntityUpdateAlert(true, ENTITY_NAME, conditionDefinition.getId().toString()))
             .body(result);
     }
 
@@ -113,6 +112,6 @@ public class ConditionDefinitionResource {
     public ResponseEntity<Void> deleteConditionDefinition(@PathVariable Long id) {
         log.debug("REST request to delete ConditionDefinition : {}", id);
         conditionDefinitionRepository.deleteById(id);
-        return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
+        return ResponseEntity.noContent().headers(headerUtil.createEntityDeletionAlert(true, ENTITY_NAME, id.toString())).build();
     }
 }

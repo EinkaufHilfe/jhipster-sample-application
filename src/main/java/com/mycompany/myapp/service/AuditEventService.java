@@ -2,10 +2,12 @@ package com.mycompany.myapp.service;
 
 import com.mycompany.myapp.config.audit.AuditEventConverter;
 import com.mycompany.myapp.repository.PersistenceAuditEventRepository;
+import com.mycompany.myapp.service.errors.AuditNotFoundException;
 import io.github.jhipster.config.JHipsterProperties;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Optional;
+import javax.persistence.EntityNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.actuate.audit.AuditEvent;
@@ -71,7 +73,10 @@ public class AuditEventService {
     }
 
     @Transactional(readOnly = true)
-    public Optional<AuditEvent> find(Long id) {
-        return persistenceAuditEventRepository.findById(id).map(auditEventConverter::convertToAuditEvent);
+    public AuditEvent find(Long id) {
+        return persistenceAuditEventRepository
+            .findById(id)
+            .map(auditEventConverter::convertToAuditEvent)
+            .orElseThrow(() -> new AuditNotFoundException());
     }
 }
