@@ -6,8 +6,8 @@
     <!--
         Added the constraints for entity Price.
     -->
-    <changeSet id="20210314182954-2" author="jhipster">
-        
+    <changeSet id="20210314182954-2" author="system">
+
         <addForeignKeyConstraint baseColumnNames="price_list_id"
                                  baseTableName="price"
                                  constraintName="fk_price_price_list_id"

@@ -6,11 +6,11 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    
+
     <!--
         Added the entity Price.
     -->
-    <changeSet id="20210314182954-1" author="jhipster">
+    <changeSet id="20210314182954-1" author="system">
         <createTable tableName="price">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
@@ -45,7 +45,7 @@
         <dropDefaultValue tableName="price" columnName="last_updated_at" columnDataType="datetime"/>
     </changeSet>
 
-    <changeSet id="20210314182954-1-relations" author="jhipster">
+    <changeSet id="20210314182954-1-relations" author="system">
 
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
@@ -58,7 +58,7 @@
           This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
           Spring Boot configuration key.
     -->
-    <changeSet id="20210314182954-1-data" author="jhipster" context="faker">
+    <changeSet id="20210314182954-1-data" author="system" context="faker">
         <loadData
                   file="config/liquibase/fake-data/price.csv"
                   separator=";"

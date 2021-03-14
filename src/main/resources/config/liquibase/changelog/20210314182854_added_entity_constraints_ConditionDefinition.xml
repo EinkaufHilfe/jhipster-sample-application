@@ -6,8 +6,8 @@
     <!--
         Added the constraints for entity ConditionDefinition.
     -->
-    <changeSet id="20210314182854-2" author="jhipster">
-        
+    <changeSet id="20210314182854-2" author="system">
+
         <addForeignKeyConstraint baseColumnNames="price_list_id"
                                  baseTableName="condition_definition"
                                  constraintName="fk_condition_definition_price_list_id"
