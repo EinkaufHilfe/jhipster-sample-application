@@ -1,5 +1,5 @@
 {
-  "jhipsterSampleApplicationApp": {
+  "application": {
     "priceList": {
       "home": {
         "title": "Price Lists",

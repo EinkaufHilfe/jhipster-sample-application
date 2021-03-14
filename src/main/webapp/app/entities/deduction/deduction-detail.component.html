@@ -1,38 +1,38 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="deduction">
-            <h2><span jhiTranslate="jhipsterSampleApplicationApp.deduction.detail.title">Deduction</span> {{ deduction.id }}</h2>
+            <h2><span jhiTranslate="application.deduction.detail.title">Deduction</span> {{ deduction.id }}</h2>
 
             <hr>
 
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="jhipsterSampleApplicationApp.deduction.reason">Reason</span></dt>
+                <dt><span jhiTranslate="application.deduction.reason">Reason</span></dt>
                 <dd>
                     <span>{{ deduction.reason }}</span>
                 </dd>
-                <dt><span jhiTranslate="jhipsterSampleApplicationApp.deduction.price">Price</span></dt>
+                <dt><span jhiTranslate="application.deduction.price">Price</span></dt>
                 <dd>
                     <span>{{ deduction.price }}</span>
                 </dd>
-                <dt><span jhiTranslate="jhipsterSampleApplicationApp.deduction.createdBy">Created By</span></dt>
+                <dt><span jhiTranslate="application.deduction.createdBy">Created By</span></dt>
                 <dd>
                     <span>{{ deduction.createdBy }}</span>
                 </dd>
-                <dt><span jhiTranslate="jhipsterSampleApplicationApp.deduction.createdAt">Created At</span></dt>
+                <dt><span jhiTranslate="application.deduction.createdAt">Created At</span></dt>
                 <dd>
                     <span>{{ deduction.createdAt }}</span>
                 </dd>
-                <dt><span jhiTranslate="jhipsterSampleApplicationApp.deduction.lastUpdatedBy">Last Updated By</span></dt>
+                <dt><span jhiTranslate="application.deduction.lastUpdatedBy">Last Updated By</span></dt>
                 <dd>
                     <span>{{ deduction.lastUpdatedBy }}</span>
                 </dd>
-                <dt><span jhiTranslate="jhipsterSampleApplicationApp.deduction.lastUpdatedAt">Last Updated At</span></dt>
+                <dt><span jhiTranslate="application.deduction.lastUpdatedAt">Last Updated At</span></dt>
                 <dd>
                     <span>{{ deduction.lastUpdatedAt }}</span>
                 </dd>
-                <dt><span jhiTranslate="jhipsterSampleApplicationApp.deduction.priceList">Price List</span></dt>
+                <dt><span jhiTranslate="application.deduction.priceList">Price List</span></dt>
                 <dd>
                     <div *ngIf="deduction.priceList">
                         <a [routerLink]="['/price-list', deduction.priceList?.id, 'view']">{{ deduction.priceList?.id }}</a>

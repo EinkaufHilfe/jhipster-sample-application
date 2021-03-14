@@ -40,7 +40,7 @@ export const conditionDefinitionRoute: Routes = [
     component: ConditionDefinitionComponent,
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'jhipsterSampleApplicationApp.conditionDefinition.home.title',
+      pageTitle: 'application.conditionDefinition.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -52,7 +52,7 @@ export const conditionDefinitionRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'jhipsterSampleApplicationApp.conditionDefinition.home.title',
+      pageTitle: 'application.conditionDefinition.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -64,7 +64,7 @@ export const conditionDefinitionRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'jhipsterSampleApplicationApp.conditionDefinition.home.title',
+      pageTitle: 'application.conditionDefinition.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -76,7 +76,7 @@ export const conditionDefinitionRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'jhipsterSampleApplicationApp.conditionDefinition.home.title',
+      pageTitle: 'application.conditionDefinition.home.title',
     },
     canActivate: [UserRouteAccessService],
   },

@@ -1,42 +1,42 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="price">
-            <h2><span jhiTranslate="jhipsterSampleApplicationApp.price.detail.title">Price</span> {{ price.id }}</h2>
+            <h2><span jhiTranslate="application.price.detail.title">Price</span> {{ price.id }}</h2>
 
             <hr>
 
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="jhipsterSampleApplicationApp.price.model">Model</span></dt>
+                <dt><span jhiTranslate="application.price.model">Model</span></dt>
                 <dd>
                     <span>{{ price.model }}</span>
                 </dd>
-                <dt><span jhiTranslate="jhipsterSampleApplicationApp.price.condition">Condition</span></dt>
+                <dt><span jhiTranslate="application.price.condition">Condition</span></dt>
                 <dd>
                     <span>{{ price.condition }}</span>
                 </dd>
-                <dt><span jhiTranslate="jhipsterSampleApplicationApp.price.price">Price</span></dt>
+                <dt><span jhiTranslate="application.price.price">Price</span></dt>
                 <dd>
                     <span>{{ price.price }}</span>
                 </dd>
-                <dt><span jhiTranslate="jhipsterSampleApplicationApp.price.createdBy">Created By</span></dt>
+                <dt><span jhiTranslate="application.price.createdBy">Created By</span></dt>
                 <dd>
                     <span>{{ price.createdBy }}</span>
                 </dd>
-                <dt><span jhiTranslate="jhipsterSampleApplicationApp.price.createdAt">Created At</span></dt>
+                <dt><span jhiTranslate="application.price.createdAt">Created At</span></dt>
                 <dd>
                     <span>{{ price.createdAt }}</span>
                 </dd>
-                <dt><span jhiTranslate="jhipsterSampleApplicationApp.price.lastUpdatedBy">Last Updated By</span></dt>
+                <dt><span jhiTranslate="application.price.lastUpdatedBy">Last Updated By</span></dt>
                 <dd>
                     <span>{{ price.lastUpdatedBy }}</span>
                 </dd>
-                <dt><span jhiTranslate="jhipsterSampleApplicationApp.price.lastUpdatedAt">Last Updated At</span></dt>
+                <dt><span jhiTranslate="application.price.lastUpdatedAt">Last Updated At</span></dt>
                 <dd>
                     <span>{{ price.lastUpdatedAt }}</span>
                 </dd>
-                <dt><span jhiTranslate="jhipsterSampleApplicationApp.price.priceList">Price List</span></dt>
+                <dt><span jhiTranslate="application.price.priceList">Price List</span></dt>
                 <dd>
                     <div *ngIf="price.priceList">
                         <a [routerLink]="['/price-list', price.priceList?.id, 'view']">{{ price.priceList?.id }}</a>

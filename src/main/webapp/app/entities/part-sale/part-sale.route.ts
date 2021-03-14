@@ -40,7 +40,7 @@ export const partSaleRoute: Routes = [
     component: PartSaleComponent,
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'jhipsterSampleApplicationApp.partSale.home.title',
+      pageTitle: 'application.partSale.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -52,7 +52,7 @@ export const partSaleRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'jhipsterSampleApplicationApp.partSale.home.title',
+      pageTitle: 'application.partSale.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -64,7 +64,7 @@ export const partSaleRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'jhipsterSampleApplicationApp.partSale.home.title',
+      pageTitle: 'application.partSale.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -76,7 +76,7 @@ export const partSaleRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'jhipsterSampleApplicationApp.partSale.home.title',
+      pageTitle: 'application.partSale.home.title',
     },
     canActivate: [UserRouteAccessService],
   },

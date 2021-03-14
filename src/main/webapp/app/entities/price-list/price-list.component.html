@@ -1,10 +1,10 @@
 <div>
     <h2 id="page-heading">
-        <span jhiTranslate="jhipsterSampleApplicationApp.priceList.home.title">Price Lists</span>
+        <span jhiTranslate="application.priceList.home.title">Price Lists</span>
 
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-price-list" [routerLink]="['/price-list/new']">
             <fa-icon icon="plus"></fa-icon>
-            <span  jhiTranslate="jhipsterSampleApplicationApp.priceList.home.createLabel">
+            <span  jhiTranslate="application.priceList.home.createLabel">
             Create a new Price List
             </span>
         </button>
@@ -15,7 +15,7 @@
     <jhi-alert></jhi-alert>
 
     <div class="alert alert-warning" id="no-result" *ngIf="priceLists?.length === 0">
-        <span jhiTranslate="jhipsterSampleApplicationApp.priceList.home.notFound">No priceLists found</span>
+        <span jhiTranslate="application.priceList.home.notFound">No priceLists found</span>
     </div>
 
     <div class="table-responsive" id="entities" *ngIf="priceLists && priceLists.length > 0">
@@ -23,14 +23,14 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.priceList.validFrom">Valid From</span></th>
-                    <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.priceList.validTill">Valid Till</span></th>
-                    <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.priceList.type">Type</span></th>
-                    <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.priceList.createdBy">Created By</span></th>
-                    <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.priceList.createdAt">Created At</span></th>
-                    <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.priceList.lastUpdatedBy">Last Updated By</span></th>
-                    <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.priceList.lastUpdatedAt">Last Updated At</span></th>
-                    <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.priceList.customer">Customer</span></th>
+                    <th scope="col" ><span jhiTranslate="application.priceList.validFrom">Valid From</span></th>
+                    <th scope="col" ><span jhiTranslate="application.priceList.validTill">Valid Till</span></th>
+                    <th scope="col" ><span jhiTranslate="application.priceList.type">Type</span></th>
+                    <th scope="col" ><span jhiTranslate="application.priceList.createdBy">Created By</span></th>
+                    <th scope="col" ><span jhiTranslate="application.priceList.createdAt">Created At</span></th>
+                    <th scope="col" ><span jhiTranslate="application.priceList.lastUpdatedBy">Last Updated By</span></th>
+                    <th scope="col" ><span jhiTranslate="application.priceList.lastUpdatedAt">Last Updated At</span></th>
+                    <th scope="col" ><span jhiTranslate="application.priceList.customer">Customer</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>

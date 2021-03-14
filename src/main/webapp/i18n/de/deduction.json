@@ -1,5 +1,5 @@
 {
-  "jhipsterSampleApplicationApp": {
+  "application": {
     "deduction": {
       "home": {
         "title": "Deductions",

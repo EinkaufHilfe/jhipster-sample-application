@@ -40,7 +40,7 @@ export const deductionRoute: Routes = [
     component: DeductionComponent,
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'jhipsterSampleApplicationApp.deduction.home.title',
+      pageTitle: 'application.deduction.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -52,7 +52,7 @@ export const deductionRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'jhipsterSampleApplicationApp.deduction.home.title',
+      pageTitle: 'application.deduction.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -64,7 +64,7 @@ export const deductionRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'jhipsterSampleApplicationApp.deduction.home.title',
+      pageTitle: 'application.deduction.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -76,7 +76,7 @@ export const deductionRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'jhipsterSampleApplicationApp.deduction.home.title',
+      pageTitle: 'application.deduction.home.title',
     },
     canActivate: [UserRouteAccessService],
   },

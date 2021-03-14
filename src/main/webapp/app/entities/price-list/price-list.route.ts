@@ -40,7 +40,7 @@ export const priceListRoute: Routes = [
     component: PriceListComponent,
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'jhipsterSampleApplicationApp.priceList.home.title',
+      pageTitle: 'application.priceList.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -52,7 +52,7 @@ export const priceListRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'jhipsterSampleApplicationApp.priceList.home.title',
+      pageTitle: 'application.priceList.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -64,7 +64,7 @@ export const priceListRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'jhipsterSampleApplicationApp.priceList.home.title',
+      pageTitle: 'application.priceList.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -76,7 +76,7 @@ export const priceListRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'jhipsterSampleApplicationApp.priceList.home.title',
+      pageTitle: 'application.priceList.home.title',
     },
     canActivate: [UserRouteAccessService],
   },

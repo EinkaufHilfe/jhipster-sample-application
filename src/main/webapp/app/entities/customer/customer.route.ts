@@ -40,7 +40,7 @@ export const customerRoute: Routes = [
     component: CustomerComponent,
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'jhipsterSampleApplicationApp.customer.home.title',
+      pageTitle: 'application.customer.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -52,7 +52,7 @@ export const customerRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'jhipsterSampleApplicationApp.customer.home.title',
+      pageTitle: 'application.customer.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -64,7 +64,7 @@ export const customerRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'jhipsterSampleApplicationApp.customer.home.title',
+      pageTitle: 'application.customer.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -76,7 +76,7 @@ export const customerRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'jhipsterSampleApplicationApp.customer.home.title',
+      pageTitle: 'application.customer.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
