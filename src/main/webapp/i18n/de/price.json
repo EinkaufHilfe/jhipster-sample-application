@@ -1,0 +1,29 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "price": {
+      "home": {
+        "title": "Prices",
+        "createLabel": "Price erstellen",
+        "createOrEditLabel": "Price erstellen oder bearbeiten",
+        "notFound": "No Prices found"
+      },
+      "created": "Price erstellt mit ID {{ param }}",
+      "updated": "Price aktualisiert mit ID {{ param }}",
+      "deleted": "Price gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Price {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Price"
+      },
+      "model": "Model",
+      "condition": "Condition",
+      "price": "Price",
+      "createdBy": "Created By",
+      "createdAt": "Created At",
+      "lastUpdatedBy": "Last Updated By",
+      "lastUpdatedAt": "Last Updated At",
+      "priceList": "Price List"
+    }
+  }
+}

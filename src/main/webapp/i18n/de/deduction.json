@@ -1,0 +1,28 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "deduction": {
+      "home": {
+        "title": "Deductions",
+        "createLabel": "Deduction erstellen",
+        "createOrEditLabel": "Deduction erstellen oder bearbeiten",
+        "notFound": "No Deductions found"
+      },
+      "created": "Deduction erstellt mit ID {{ param }}",
+      "updated": "Deduction aktualisiert mit ID {{ param }}",
+      "deleted": "Deduction gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Deduction {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Deduction"
+      },
+      "reason": "Reason",
+      "price": "Price",
+      "createdBy": "Created By",
+      "createdAt": "Created At",
+      "lastUpdatedBy": "Last Updated By",
+      "lastUpdatedAt": "Last Updated At",
+      "priceList": "Price List"
+    }
+  }
+}

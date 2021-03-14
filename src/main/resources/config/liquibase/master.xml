@@ -14,7 +14,18 @@
     <property name="uuidType" value="uuid" dbms="h2, postgresql"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210314182554_added_entity_PriceList.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210314182654_added_entity_Deduction.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210314182754_added_entity_PartSale.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210314182854_added_entity_ConditionDefinition.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210314182954_added_entity_Price.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210314183054_added_entity_Customer.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20210314182554_added_entity_constraints_PriceList.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210314182654_added_entity_constraints_Deduction.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210314182754_added_entity_constraints_PartSale.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210314182854_added_entity_constraints_ConditionDefinition.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210314182954_added_entity_constraints_Price.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

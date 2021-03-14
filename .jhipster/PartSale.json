@@ -1,0 +1,49 @@
+{
+  "name": "PartSale",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdAt",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "lastUpdatedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastUpdatedAt",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "priceList",
+      "otherEntityRelationshipName": "partSale",
+      "relationshipName": "priceList",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210314182754",
+  "entityTableName": "part_sale",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

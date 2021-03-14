@@ -1,0 +1,33 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "priceList": {
+      "home": {
+        "title": "Price Lists",
+        "createLabel": "Price List erstellen",
+        "createOrEditLabel": "Price List erstellen oder bearbeiten",
+        "notFound": "No Price Lists found"
+      },
+      "created": "Price List erstellt mit ID {{ param }}",
+      "updated": "Price List aktualisiert mit ID {{ param }}",
+      "deleted": "Price List gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Price List {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Price List"
+      },
+      "validFrom": "Valid From",
+      "validTill": "Valid Till",
+      "type": "Type",
+      "createdBy": "Created By",
+      "createdAt": "Created At",
+      "lastUpdatedBy": "Last Updated By",
+      "lastUpdatedAt": "Last Updated At",
+      "condition": "Condition",
+      "deduction": "Deduction",
+      "partSale": "Part Sale",
+      "price": "Price",
+      "customer": "Customer"
+    }
+  }
+}
