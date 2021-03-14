@@ -1,0 +1,28 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "conditionDefinition": {
+      "home": {
+        "title": "Condition Definitions",
+        "createLabel": "Condition Definition erstellen",
+        "createOrEditLabel": "Condition Definition erstellen oder bearbeiten",
+        "notFound": "No Condition Definitions found"
+      },
+      "created": "Condition Definition erstellt mit ID {{ param }}",
+      "updated": "Condition Definition aktualisiert mit ID {{ param }}",
+      "deleted": "Condition Definition gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Condition Definition {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Condition Definition"
+      },
+      "definition": "Definition",
+      "description": "Description",
+      "createdBy": "Created By",
+      "createdAt": "Created At",
+      "lastUpdatedBy": "Last Updated By",
+      "lastUpdatedAt": "Last Updated At",
+      "priceList": "Price List"
+    }
+  }
+}

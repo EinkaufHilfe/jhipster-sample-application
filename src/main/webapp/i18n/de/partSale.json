@@ -1,0 +1,28 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "partSale": {
+      "home": {
+        "title": "Part Sales",
+        "createLabel": "Part Sale erstellen",
+        "createOrEditLabel": "Part Sale erstellen oder bearbeiten",
+        "notFound": "No Part Sales found"
+      },
+      "created": "Part Sale erstellt mit ID {{ param }}",
+      "updated": "Part Sale aktualisiert mit ID {{ param }}",
+      "deleted": "Part Sale gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Part Sale {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Part Sale"
+      },
+      "name": "Name",
+      "price": "Price",
+      "createdBy": "Created By",
+      "createdAt": "Created At",
+      "lastUpdatedBy": "Last Updated By",
+      "lastUpdatedAt": "Last Updated At",
+      "priceList": "Price List"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "ConditionDefinition",
+  "fields": [
+    {
+      "fieldName": "definition",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdAt",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "lastUpdatedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastUpdatedAt",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "priceList",
+      "otherEntityRelationshipName": "condition",
+      "relationshipName": "priceList",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210314182854",
+  "entityTableName": "condition_definition",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
