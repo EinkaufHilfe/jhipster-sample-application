@@ -27,11 +27,8 @@ public class PartSaleResource {
 
     private static final String ENTITY_NAME = "partSale";
 
-    @Value("${jhipster.clientApp.name}")
-    private String applicationName;
-
     private final PartSaleRepository partSaleRepository;
-    private HeaderUtil headerUtil;
+    private final HeaderUtil headerUtil;
 
     public PartSaleResource(PartSaleRepository partSaleRepository, HeaderUtil headerUtil) {
         this.partSaleRepository = partSaleRepository;
@@ -65,10 +62,9 @@ public class PartSaleResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated partSale,
      * or with status {@code 400 (Bad Request)} if the partSale is not valid,
      * or with status {@code 500 (Internal Server Error)} if the partSale couldn't be updated.
-     * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/part-sales")
-    public ResponseEntity<PartSale> updatePartSale(@RequestBody PartSale partSale) throws URISyntaxException {
+    public ResponseEntity<PartSale> updatePartSale(@RequestBody PartSale partSale) {
         log.debug("REST request to update PartSale : {}", partSale);
         if (partSale.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

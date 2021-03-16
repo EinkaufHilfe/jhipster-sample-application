@@ -28,7 +28,7 @@ public class PriceListResource {
     private static final String ENTITY_NAME = "priceList";
 
     private final PriceListRepository priceListRepository;
-    private HeaderUtil headerUtil;
+    private final HeaderUtil headerUtil;
 
     public PriceListResource(PriceListRepository priceListRepository, HeaderUtil headerUtil) {
         this.priceListRepository = priceListRepository;
@@ -62,10 +62,9 @@ public class PriceListResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated priceList,
      * or with status {@code 400 (Bad Request)} if the priceList is not valid,
      * or with status {@code 500 (Internal Server Error)} if the priceList couldn't be updated.
-     * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/price-lists")
-    public ResponseEntity<PriceList> updatePriceList(@RequestBody PriceList priceList) throws URISyntaxException {
+    public ResponseEntity<PriceList> updatePriceList(@RequestBody PriceList priceList) {
         log.debug("REST request to update PriceList : {}", priceList);
         if (priceList.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

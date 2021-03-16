@@ -28,7 +28,7 @@ public class CustomerResource {
     private static final String ENTITY_NAME = "customer";
 
     private final CustomerRepository customerRepository;
-    private HeaderUtil headerUtil;
+    private final HeaderUtil headerUtil;
 
     public CustomerResource(CustomerRepository customerRepository, HeaderUtil headerUtil) {
         this.customerRepository = customerRepository;
@@ -62,10 +62,9 @@ public class CustomerResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated customer,
      * or with status {@code 400 (Bad Request)} if the customer is not valid,
      * or with status {@code 500 (Internal Server Error)} if the customer couldn't be updated.
-     * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/customers")
-    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) throws URISyntaxException {
+    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) {
         log.debug("REST request to update Customer : {}", customer);
         if (customer.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

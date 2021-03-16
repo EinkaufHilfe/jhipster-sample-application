@@ -28,7 +28,7 @@ public class DeductionResource {
     private static final String ENTITY_NAME = "deduction";
 
     private final DeductionRepository deductionRepository;
-    private HeaderUtil headerUtil;
+    private final HeaderUtil headerUtil;
 
     public DeductionResource(DeductionRepository deductionRepository, HeaderUtil headerUtil) {
         this.deductionRepository = deductionRepository;
@@ -62,10 +62,9 @@ public class DeductionResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated deduction,
      * or with status {@code 400 (Bad Request)} if the deduction is not valid,
      * or with status {@code 500 (Internal Server Error)} if the deduction couldn't be updated.
-     * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/deductions")
-    public ResponseEntity<Deduction> updateDeduction(@RequestBody Deduction deduction) throws URISyntaxException {
+    public ResponseEntity<Deduction> updateDeduction(@RequestBody Deduction deduction) {
         log.debug("REST request to update Deduction : {}", deduction);
         if (deduction.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

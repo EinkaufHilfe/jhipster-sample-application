@@ -69,7 +69,7 @@ public class UserResource {
     private final UserRepository userRepository;
 
     private final MailService mailService;
-    private HeaderUtil headerUtil;
+    private final HeaderUtil headerUtil;
 
     public UserResource(UserService userService, UserRepository userRepository, MailService mailService, HeaderUtil headerUtil) {
         this.userService = userService;

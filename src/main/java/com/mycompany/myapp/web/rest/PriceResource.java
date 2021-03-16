@@ -27,11 +27,8 @@ public class PriceResource {
 
     private static final String ENTITY_NAME = "price";
 
-    @Value("${jhipster.clientApp.name}")
-    private String applicationName;
-
     private final PriceRepository priceRepository;
-    private HeaderUtil headerUtil;
+    private final HeaderUtil headerUtil;
 
     public PriceResource(PriceRepository priceRepository, HeaderUtil headerUtil) {
         this.priceRepository = priceRepository;
@@ -65,10 +62,9 @@ public class PriceResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated price,
      * or with status {@code 400 (Bad Request)} if the price is not valid,
      * or with status {@code 500 (Internal Server Error)} if the price couldn't be updated.
-     * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/prices")
-    public ResponseEntity<Price> updatePrice(@RequestBody Price price) throws URISyntaxException {
+    public ResponseEntity<Price> updatePrice(@RequestBody Price price) {
         log.debug("REST request to update Price : {}", price);
         if (price.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
