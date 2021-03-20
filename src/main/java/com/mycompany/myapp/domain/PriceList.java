@@ -1,16 +1,14 @@
 package com.mycompany.myapp.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
-import javax.persistence.*;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.*;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
  * A PriceList.
@@ -18,14 +16,8 @@ import java.util.Set;
 @Entity
 @Table(name = "price_list")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class PriceList implements Serializable {
-
+public class PriceList extends AbstractAuditingEntity implements Serializable {
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
-    private Long id;
 
     @Column(name = "valid_from")
     private LocalDate validFrom;
@@ -35,18 +27,6 @@ public class PriceList implements Serializable {
 
     @Column(name = "type")
     private String type;
-
-    @Column(name = "created_by")
-    private String createdBy;
-
-    @Column(name = "created_at")
-    private ZonedDateTime createdAt;
-
-    @Column(name = "last_updated_by")
-    private String lastUpdatedBy;
-
-    @Column(name = "last_updated_at")
-    private ZonedDateTime lastUpdatedAt;
 
     @OneToMany(mappedBy = "priceList")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -69,14 +49,6 @@ public class PriceList implements Serializable {
     private Customer customer;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public LocalDate getValidFrom() {
         return validFrom;
     }
@@ -114,58 +86,6 @@ public class PriceList implements Serializable {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public PriceList createdBy(String createdBy) {
-        this.createdBy = createdBy;
-        return this;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public ZonedDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public PriceList createdAt(ZonedDateTime createdAt) {
-        this.createdAt = createdAt;
-        return this;
-    }
-
-    public void setCreatedAt(ZonedDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getLastUpdatedBy() {
-        return lastUpdatedBy;
-    }
-
-    public PriceList lastUpdatedBy(String lastUpdatedBy) {
-        this.lastUpdatedBy = lastUpdatedBy;
-        return this;
-    }
-
-    public void setLastUpdatedBy(String lastUpdatedBy) {
-        this.lastUpdatedBy = lastUpdatedBy;
-    }
-
-    public ZonedDateTime getLastUpdatedAt() {
-        return lastUpdatedAt;
-    }
-
-    public PriceList lastUpdatedAt(ZonedDateTime lastUpdatedAt) {
-        this.lastUpdatedAt = lastUpdatedAt;
-        return this;
-    }
-
-    public void setLastUpdatedAt(ZonedDateTime lastUpdatedAt) {
-        this.lastUpdatedAt = lastUpdatedAt;
     }
 
     public Set<ConditionDefinition> getConditions() {
@@ -280,6 +200,7 @@ public class PriceList implements Serializable {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -306,10 +227,6 @@ public class PriceList implements Serializable {
             ", validFrom='" + getValidFrom() + "'" +
             ", validTill='" + getValidTill() + "'" +
             ", type='" + getType() + "'" +
-            ", createdBy='" + getCreatedBy() + "'" +
-            ", createdAt='" + getCreatedAt() + "'" +
-            ", lastUpdatedBy='" + getLastUpdatedBy() + "'" +
-            ", lastUpdatedAt='" + getLastUpdatedAt() + "'" +
             "}";
     }
 }
