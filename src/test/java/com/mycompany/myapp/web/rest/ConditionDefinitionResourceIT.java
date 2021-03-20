@@ -1,9 +1,20 @@
 package com.mycompany.myapp.web.rest;
 
+import static com.mycompany.myapp.web.rest.TestUtil.sameInstant;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.hasItem;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
 import com.mycompany.myapp.JhipsterSampleApplicationApp;
 import com.mycompany.myapp.domain.ConditionDefinition;
 import com.mycompany.myapp.repository.ConditionDefinitionRepository;
-
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.util.List;
+import javax.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,18 +24,6 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
-import javax.persistence.EntityManager;
-import java.time.Instant;
-import java.time.ZonedDateTime;
-import java.time.ZoneOffset;
-import java.time.ZoneId;
-import java.util.List;
-
-import static com.mycompany.myapp.web.rest.TestUtil.sameInstant;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.hasItem;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
  * Integration tests for the {@link ConditionDefinitionResource} REST controller.
@@ -33,7 +32,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @WithMockUser
 public class ConditionDefinitionResourceIT {
-
     private static final String DEFAULT_DEFINITION = "AAAAAAAAAA";
     private static final String UPDATED_DEFINITION = "BBBBBBBBBB";
 
@@ -70,15 +68,10 @@ public class ConditionDefinitionResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static ConditionDefinition createEntity(EntityManager em) {
-        ConditionDefinition conditionDefinition = new ConditionDefinition()
-            .definition(DEFAULT_DEFINITION)
-            .description(DEFAULT_DESCRIPTION)
-            .createdBy(DEFAULT_CREATED_BY)
-            .createdAt(DEFAULT_CREATED_AT)
-            .lastUpdatedBy(DEFAULT_LAST_UPDATED_BY)
-            .lastUpdatedAt(DEFAULT_LAST_UPDATED_AT);
+        ConditionDefinition conditionDefinition = new ConditionDefinition().definition(DEFAULT_DEFINITION).description(DEFAULT_DESCRIPTION);
         return conditionDefinition;
     }
+
     /**
      * Create an updated entity for this test.
      *
@@ -86,13 +79,7 @@ public class ConditionDefinitionResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static ConditionDefinition createUpdatedEntity(EntityManager em) {
-        ConditionDefinition conditionDefinition = new ConditionDefinition()
-            .definition(UPDATED_DEFINITION)
-            .description(UPDATED_DESCRIPTION)
-            .createdBy(UPDATED_CREATED_BY)
-            .createdAt(UPDATED_CREATED_AT)
-            .lastUpdatedBy(UPDATED_LAST_UPDATED_BY)
-            .lastUpdatedAt(UPDATED_LAST_UPDATED_AT);
+        ConditionDefinition conditionDefinition = new ConditionDefinition().definition(UPDATED_DEFINITION).description(UPDATED_DESCRIPTION);
         return conditionDefinition;
     }
 
@@ -106,9 +93,12 @@ public class ConditionDefinitionResourceIT {
     public void createConditionDefinition() throws Exception {
         int databaseSizeBeforeCreate = conditionDefinitionRepository.findAll().size();
         // Create the ConditionDefinition
-        restConditionDefinitionMockMvc.perform(post("/api/condition-definitions")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(conditionDefinition)))
+        restConditionDefinitionMockMvc
+            .perform(
+                post("/api/condition-definitions")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(TestUtil.convertObjectToJsonBytes(conditionDefinition))
+            )
             .andExpect(status().isCreated());
 
         // Validate the ConditionDefinition in the database
@@ -118,9 +108,9 @@ public class ConditionDefinitionResourceIT {
         assertThat(testConditionDefinition.getDefinition()).isEqualTo(DEFAULT_DEFINITION);
         assertThat(testConditionDefinition.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testConditionDefinition.getCreatedBy()).isEqualTo(DEFAULT_CREATED_BY);
-        assertThat(testConditionDefinition.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
-        assertThat(testConditionDefinition.getLastUpdatedBy()).isEqualTo(DEFAULT_LAST_UPDATED_BY);
-        assertThat(testConditionDefinition.getLastUpdatedAt()).isEqualTo(DEFAULT_LAST_UPDATED_AT);
+        //        assertThat(testConditionDefinition.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
+        //        assertThat(testConditionDefinition.getLastUpdatedBy()).isEqualTo(DEFAULT_LAST_UPDATED_BY);
+        //        assertThat(testConditionDefinition.getLastUpdatedAt()).isEqualTo(DEFAULT_LAST_UPDATED_AT);
     }
 
     @Test
@@ -132,16 +122,18 @@ public class ConditionDefinitionResourceIT {
         conditionDefinition.setId(1L);
 
         // An entity with an existing ID cannot be created, so this API call must fail
-        restConditionDefinitionMockMvc.perform(post("/api/condition-definitions")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(conditionDefinition)))
+        restConditionDefinitionMockMvc
+            .perform(
+                post("/api/condition-definitions")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(TestUtil.convertObjectToJsonBytes(conditionDefinition))
+            )
             .andExpect(status().isBadRequest());
 
         // Validate the ConditionDefinition in the database
         List<ConditionDefinition> conditionDefinitionList = conditionDefinitionRepository.findAll();
         assertThat(conditionDefinitionList).hasSize(databaseSizeBeforeCreate);
     }
-
 
     @Test
     @Transactional
@@ -150,7 +142,8 @@ public class ConditionDefinitionResourceIT {
         conditionDefinitionRepository.saveAndFlush(conditionDefinition);
 
         // Get all the conditionDefinitionList
-        restConditionDefinitionMockMvc.perform(get("/api/condition-definitions?sort=id,desc"))
+        restConditionDefinitionMockMvc
+            .perform(get("/api/condition-definitions?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(conditionDefinition.getId().intValue())))
@@ -161,7 +154,7 @@ public class ConditionDefinitionResourceIT {
             .andExpect(jsonPath("$.[*].lastUpdatedBy").value(hasItem(DEFAULT_LAST_UPDATED_BY)))
             .andExpect(jsonPath("$.[*].lastUpdatedAt").value(hasItem(sameInstant(DEFAULT_LAST_UPDATED_AT))));
     }
-    
+
     @Test
     @Transactional
     public void getConditionDefinition() throws Exception {
@@ -169,7 +162,8 @@ public class ConditionDefinitionResourceIT {
         conditionDefinitionRepository.saveAndFlush(conditionDefinition);
 
         // Get the conditionDefinition
-        restConditionDefinitionMockMvc.perform(get("/api/condition-definitions/{id}", conditionDefinition.getId()))
+        restConditionDefinitionMockMvc
+            .perform(get("/api/condition-definitions/{id}", conditionDefinition.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(conditionDefinition.getId().intValue()))
@@ -180,12 +174,12 @@ public class ConditionDefinitionResourceIT {
             .andExpect(jsonPath("$.lastUpdatedBy").value(DEFAULT_LAST_UPDATED_BY))
             .andExpect(jsonPath("$.lastUpdatedAt").value(sameInstant(DEFAULT_LAST_UPDATED_AT)));
     }
+
     @Test
     @Transactional
     public void getNonExistingConditionDefinition() throws Exception {
         // Get the conditionDefinition
-        restConditionDefinitionMockMvc.perform(get("/api/condition-definitions/{id}", Long.MAX_VALUE))
-            .andExpect(status().isNotFound());
+        restConditionDefinitionMockMvc.perform(get("/api/condition-definitions/{id}", Long.MAX_VALUE)).andExpect(status().isNotFound());
     }
 
     @Test
@@ -200,17 +194,14 @@ public class ConditionDefinitionResourceIT {
         ConditionDefinition updatedConditionDefinition = conditionDefinitionRepository.findById(conditionDefinition.getId()).get();
         // Disconnect from session so that the updates on updatedConditionDefinition are not directly saved in db
         em.detach(updatedConditionDefinition);
-        updatedConditionDefinition
-            .definition(UPDATED_DEFINITION)
-            .description(UPDATED_DESCRIPTION)
-            .createdBy(UPDATED_CREATED_BY)
-            .createdAt(UPDATED_CREATED_AT)
-            .lastUpdatedBy(UPDATED_LAST_UPDATED_BY)
-            .lastUpdatedAt(UPDATED_LAST_UPDATED_AT);
+        updatedConditionDefinition.definition(UPDATED_DEFINITION).description(UPDATED_DESCRIPTION);
 
-        restConditionDefinitionMockMvc.perform(put("/api/condition-definitions")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(updatedConditionDefinition)))
+        restConditionDefinitionMockMvc
+            .perform(
+                put("/api/condition-definitions")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(TestUtil.convertObjectToJsonBytes(updatedConditionDefinition))
+            )
             .andExpect(status().isOk());
 
         // Validate the ConditionDefinition in the database
@@ -220,9 +211,9 @@ public class ConditionDefinitionResourceIT {
         assertThat(testConditionDefinition.getDefinition()).isEqualTo(UPDATED_DEFINITION);
         assertThat(testConditionDefinition.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testConditionDefinition.getCreatedBy()).isEqualTo(UPDATED_CREATED_BY);
-        assertThat(testConditionDefinition.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
-        assertThat(testConditionDefinition.getLastUpdatedBy()).isEqualTo(UPDATED_LAST_UPDATED_BY);
-        assertThat(testConditionDefinition.getLastUpdatedAt()).isEqualTo(UPDATED_LAST_UPDATED_AT);
+        //        assertThat(testConditionDefinition.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+        //        assertThat(testConditionDefinition.getLastUpdatedBy()).isEqualTo(UPDATED_LAST_UPDATED_BY);
+        //        assertThat(testConditionDefinition.getLastUpdatedAt()).isEqualTo(UPDATED_LAST_UPDATED_AT);
     }
 
     @Test
@@ -231,9 +222,12 @@ public class ConditionDefinitionResourceIT {
         int databaseSizeBeforeUpdate = conditionDefinitionRepository.findAll().size();
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
-        restConditionDefinitionMockMvc.perform(put("/api/condition-definitions")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(conditionDefinition)))
+        restConditionDefinitionMockMvc
+            .perform(
+                put("/api/condition-definitions")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(TestUtil.convertObjectToJsonBytes(conditionDefinition))
+            )
             .andExpect(status().isBadRequest());
 
         // Validate the ConditionDefinition in the database
@@ -250,8 +244,8 @@ public class ConditionDefinitionResourceIT {
         int databaseSizeBeforeDelete = conditionDefinitionRepository.findAll().size();
 
         // Delete the conditionDefinition
-        restConditionDefinitionMockMvc.perform(delete("/api/condition-definitions/{id}", conditionDefinition.getId())
-            .accept(MediaType.APPLICATION_JSON))
+        restConditionDefinitionMockMvc
+            .perform(delete("/api/condition-definitions/{id}", conditionDefinition.getId()).accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isNoContent());
 
         // Validate the database contains one less item
