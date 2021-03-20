@@ -1,7 +1,6 @@
 package com.mycompany.myapp.web.rest;
 
 import com.mycompany.myapp.domain.Customer;
-import com.mycompany.myapp.repository.CustomerRepository;
 import com.mycompany.myapp.service.CustomerService;
 import com.mycompany.myapp.service.dto.CustomerDTO;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
@@ -28,12 +27,10 @@ public class CustomerResource {
 
     private static final String ENTITY_NAME = "customer";
 
-    private final CustomerRepository customerRepository;
     private final HeaderUtil headerUtil;
     private final CustomerService customerService;
 
-    public CustomerResource(CustomerRepository customerRepository, HeaderUtil headerUtil, CustomerService customerService) {
-        this.customerRepository = customerRepository;
+    public CustomerResource(HeaderUtil headerUtil, CustomerService customerService) {
         this.headerUtil = headerUtil;
         this.customerService = customerService;
     }
@@ -48,7 +45,7 @@ public class CustomerResource {
     @PostMapping("/customers")
     public ResponseEntity<Customer> createCustomer(@RequestBody CustomerDTO customer) throws URISyntaxException {
         log.debug("REST request to create Customer : {}", customer);
-        Customer result = customerService.save(customer);
+        Customer result = customerService.create(customer);
         return ResponseEntity
             .created(new URI("/api/customers/" + result.getId()))
             .headers(headerUtil.createEntityCreationAlert(true, ENTITY_NAME, result.getId().toString()))
@@ -64,12 +61,12 @@ public class CustomerResource {
      * or with status {@code 500 (Internal Server Error)} if the customer couldn't be updated.
      */
     @PutMapping("/customers")
-    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) {
+    public ResponseEntity<Customer> updateCustomer(@RequestBody CustomerDTO customer) {
         log.debug("REST request to update Customer : {}", customer);
         if (customer.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        Customer result = customerRepository.save(customer);
+        Customer result = customerService.update(customer);
         return ResponseEntity.ok().headers(headerUtil.createEntityUpdateAlert(true, ENTITY_NAME, customer.getId().toString())).body(result);
     }
 
@@ -81,7 +78,7 @@ public class CustomerResource {
     @GetMapping("/customers")
     public List<Customer> getAllCustomers() {
         log.debug("REST request to get all Customers");
-        return customerRepository.findAll();
+        return customerService.findAll();
     }
 
     /**
@@ -93,7 +90,7 @@ public class CustomerResource {
     @GetMapping("/customers/{id}")
     public ResponseEntity<Customer> getCustomer(@PathVariable Long id) {
         log.debug("REST request to get Customer : {}", id);
-        Optional<Customer> customer = customerRepository.findById(id);
+        Optional<Customer> customer = customerService.findById(id);
         return ResponseUtil.wrapOrNotFound(customer);
     }
 
@@ -106,7 +103,7 @@ public class CustomerResource {
     @DeleteMapping("/customers/{id}")
     public ResponseEntity<Void> deleteCustomer(@PathVariable Long id) {
         log.debug("REST request to delete Customer : {}", id);
-        customerRepository.deleteById(id);
+        customerService.deleteById(id);
         return ResponseEntity.noContent().headers(headerUtil.createEntityDeletionAlert(true, ENTITY_NAME, id.toString())).build();
     }
 }
