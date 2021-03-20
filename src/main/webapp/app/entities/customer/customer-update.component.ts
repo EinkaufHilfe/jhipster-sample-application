@@ -21,7 +21,7 @@ export class CustomerUpdateComponent implements OnInit {
     id: [],
     name: [],
     createdBy: [],
-    createdAt: [],
+    createdDate: [],
     lastModifiedBy: [],
     lastUpdatedAt: [],
   });
@@ -39,7 +39,7 @@ export class CustomerUpdateComponent implements OnInit {
       id: customer.id,
       name: customer.name,
       createdBy: customer.createdBy,
-      createdAt: customer.createdAt ? customer.createdAt.format(DATE_TIME_FORMAT) : null,
+      createdDate: customer.createdDate ? customer.createdDate.format(DATE_TIME_FORMAT) : null,
       lastModifiedBy: customer.lastModifiedBy,
       lastUpdatedAt: customer.lastUpdatedAt ? customer.lastUpdatedAt.format(DATE_TIME_FORMAT) : null,
     });
@@ -65,7 +65,9 @@ export class CustomerUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       name: this.editForm.get(['name'])!.value,
       createdBy: this.editForm.get(['createdBy'])!.value,
-      createdAt: this.editForm.get(['createdAt'])!.value ? moment(this.editForm.get(['createdAt'])!.value, DATE_TIME_FORMAT) : undefined,
+      createdDate: this.editForm.get(['createdDate'])!.value
+        ? moment(this.editForm.get(['createdDate'])!.value, DATE_TIME_FORMAT)
+        : undefined,
       lastModifiedBy: this.editForm.get(['lastModifiedBy'])!.value,
       lastUpdatedAt: this.editForm.get(['lastUpdatedAt'])!.value
         ? moment(this.editForm.get(['lastUpdatedAt'])!.value, DATE_TIME_FORMAT)

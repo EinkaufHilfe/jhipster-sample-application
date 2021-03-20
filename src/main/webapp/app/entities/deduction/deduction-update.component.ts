@@ -25,7 +25,7 @@ export class DeductionUpdateComponent implements OnInit {
     reason: [],
     price: [],
     createdBy: [],
-    createdAt: [],
+    createdDate: [],
     lastModifiedBy: [],
     lastUpdatedAt: [],
     priceList: [],
@@ -42,7 +42,7 @@ export class DeductionUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ deduction }) => {
       if (!deduction.id) {
         const today = moment().startOf('day');
-        deduction.createdAt = today;
+        deduction.createdDate = today;
         deduction.lastUpdatedAt = today;
       }
 
@@ -58,7 +58,7 @@ export class DeductionUpdateComponent implements OnInit {
       reason: deduction.reason,
       price: deduction.price,
       createdBy: deduction.createdBy,
-      createdAt: deduction.createdAt ? deduction.createdAt.format(DATE_TIME_FORMAT) : null,
+      createdDate: deduction.createdDate ? deduction.createdDate.format(DATE_TIME_FORMAT) : null,
       lastModifiedBy: deduction.lastModifiedBy,
       lastUpdatedAt: deduction.lastUpdatedAt ? deduction.lastUpdatedAt.format(DATE_TIME_FORMAT) : null,
       priceList: deduction.priceList,
@@ -86,7 +86,9 @@ export class DeductionUpdateComponent implements OnInit {
       reason: this.editForm.get(['reason'])!.value,
       price: this.editForm.get(['price'])!.value,
       createdBy: this.editForm.get(['createdBy'])!.value,
-      createdAt: this.editForm.get(['createdAt'])!.value ? moment(this.editForm.get(['createdAt'])!.value, DATE_TIME_FORMAT) : undefined,
+      createdDate: this.editForm.get(['createdDate'])!.value
+        ? moment(this.editForm.get(['createdDate'])!.value, DATE_TIME_FORMAT)
+        : undefined,
       lastModifiedBy: this.editForm.get(['lastModifiedBy'])!.value,
       lastUpdatedAt: this.editForm.get(['lastUpdatedAt'])!.value
         ? moment(this.editForm.get(['lastUpdatedAt'])!.value, DATE_TIME_FORMAT)

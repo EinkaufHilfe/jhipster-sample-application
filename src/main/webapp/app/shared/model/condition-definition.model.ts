@@ -6,7 +6,7 @@ export interface IConditionDefinition {
   definition?: string;
   description?: string;
   createdBy?: string;
-  createdAt?: Moment;
+  createdDate?: Moment;
   lastModifiedBy?: string;
   lastUpdatedAt?: Moment;
   priceList?: IPriceList;
@@ -18,7 +18,7 @@ export class ConditionDefinition implements IConditionDefinition {
     public definition?: string,
     public description?: string,
     public createdBy?: string,
-    public createdAt?: Moment,
+    public createdDate?: Moment,
     public lastModifiedBy?: string,
     public lastUpdatedAt?: Moment,
     public priceList?: IPriceList

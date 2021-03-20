@@ -27,7 +27,7 @@
                     <th scope="col" ><span jhiTranslate="application.price.condition">Condition</span></th>
                     <th scope="col" ><span jhiTranslate="application.price.price">Price</span></th>
                     <th scope="col" ><span jhiTranslate="application.price.createdBy">Created By</span></th>
-                    <th scope="col" ><span jhiTranslate="application.price.createdAt">Created At</span></th>
+                    <th scope="col" ><span jhiTranslate="application.price.createdDate">Created At</span></th>
                     <th scope="col" ><span jhiTranslate="application.price.lastModifiedBy">Last Updated By</span></th>
                     <th scope="col" ><span jhiTranslate="application.price.lastUpdatedAt">Last Updated At</span></th>
                     <th scope="col" ><span jhiTranslate="application.price.priceList">Price List</span></th>
@@ -41,7 +41,7 @@
                     <td>{{ price.condition }}</td>
                     <td>{{ price.price }}</td>
                     <td>{{ price.createdBy }}</td>
-                    <td>{{ price.createdAt | date:'medium' }}</td>
+                    <td>{{ price.createdDate | date:'medium' }}</td>
                     <td>{{ price.lastModifiedBy }}</td>
                     <td>{{ price.lastUpdatedAt | date:'medium' }}</td>
                     <td>

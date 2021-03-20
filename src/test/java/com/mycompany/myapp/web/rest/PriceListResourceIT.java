@@ -148,7 +148,7 @@ public class PriceListResourceIT {
             .andExpect(jsonPath("$.[*].validTill").value(hasItem(DEFAULT_VALID_TILL.toString())))
             .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE)))
             .andExpect(jsonPath("$.[*].createdBy").value(hasItem(DEFAULT_CREATED_BY)))
-            .andExpect(jsonPath("$.[*].createdAt").value(hasItem(sameInstant(DEFAULT_CREATED_AT))))
+            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(sameInstant(DEFAULT_CREATED_AT))))
             .andExpect(jsonPath("$.[*].lastModifiedBy").value(hasItem(DEFAULT_LAST_UPDATED_BY)))
             .andExpect(jsonPath("$.[*].lastUpdatedAt").value(hasItem(sameInstant(DEFAULT_LAST_UPDATED_AT))));
     }
@@ -169,7 +169,7 @@ public class PriceListResourceIT {
             .andExpect(jsonPath("$.validTill").value(DEFAULT_VALID_TILL.toString()))
             .andExpect(jsonPath("$.type").value(DEFAULT_TYPE))
             .andExpect(jsonPath("$.createdBy").value(DEFAULT_CREATED_BY))
-            .andExpect(jsonPath("$.createdAt").value(sameInstant(DEFAULT_CREATED_AT)))
+            .andExpect(jsonPath("$.createdDate").value(sameInstant(DEFAULT_CREATED_AT)))
             .andExpect(jsonPath("$.lastModifiedBy").value(DEFAULT_LAST_UPDATED_BY))
             .andExpect(jsonPath("$.lastUpdatedAt").value(sameInstant(DEFAULT_LAST_UPDATED_AT)));
     }

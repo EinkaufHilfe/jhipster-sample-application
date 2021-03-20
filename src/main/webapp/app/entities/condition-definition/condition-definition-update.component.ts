@@ -25,7 +25,7 @@ export class ConditionDefinitionUpdateComponent implements OnInit {
     definition: [],
     description: [],
     createdBy: [],
-    createdAt: [],
+    createdDate: [],
     lastModifiedBy: [],
     lastUpdatedAt: [],
     priceList: [],
@@ -42,7 +42,7 @@ export class ConditionDefinitionUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ conditionDefinition }) => {
       if (!conditionDefinition.id) {
         const today = moment().startOf('day');
-        conditionDefinition.createdAt = today;
+        conditionDefinition.createdDate = today;
         conditionDefinition.lastUpdatedAt = today;
       }
 
@@ -58,7 +58,7 @@ export class ConditionDefinitionUpdateComponent implements OnInit {
       definition: conditionDefinition.definition,
       description: conditionDefinition.description,
       createdBy: conditionDefinition.createdBy,
-      createdAt: conditionDefinition.createdAt ? conditionDefinition.createdAt.format(DATE_TIME_FORMAT) : null,
+      createdDate: conditionDefinition.createdDate ? conditionDefinition.createdDate.format(DATE_TIME_FORMAT) : null,
       lastModifiedBy: conditionDefinition.lastModifiedBy,
       lastUpdatedAt: conditionDefinition.lastUpdatedAt ? conditionDefinition.lastUpdatedAt.format(DATE_TIME_FORMAT) : null,
       priceList: conditionDefinition.priceList,
@@ -86,7 +86,9 @@ export class ConditionDefinitionUpdateComponent implements OnInit {
       definition: this.editForm.get(['definition'])!.value,
       description: this.editForm.get(['description'])!.value,
       createdBy: this.editForm.get(['createdBy'])!.value,
-      createdAt: this.editForm.get(['createdAt'])!.value ? moment(this.editForm.get(['createdAt'])!.value, DATE_TIME_FORMAT) : undefined,
+      createdDate: this.editForm.get(['createdDate'])!.value
+        ? moment(this.editForm.get(['createdDate'])!.value, DATE_TIME_FORMAT)
+        : undefined,
       lastModifiedBy: this.editForm.get(['lastModifiedBy'])!.value,
       lastUpdatedAt: this.editForm.get(['lastUpdatedAt'])!.value
         ? moment(this.editForm.get(['lastUpdatedAt'])!.value, DATE_TIME_FORMAT)

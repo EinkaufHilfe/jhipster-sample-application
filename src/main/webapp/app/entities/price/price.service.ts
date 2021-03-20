@@ -50,7 +50,7 @@ export class PriceService {
 
   protected convertDateFromClient(price: IPrice): IPrice {
     const copy: IPrice = Object.assign({}, price, {
-      createdAt: price.createdAt && price.createdAt.isValid() ? price.createdAt.toJSON() : undefined,
+      createdDate: price.createdDate && price.createdDate.isValid() ? price.createdDate.toJSON() : undefined,
       lastUpdatedAt: price.lastUpdatedAt && price.lastUpdatedAt.isValid() ? price.lastUpdatedAt.toJSON() : undefined,
     });
     return copy;
@@ -58,7 +58,7 @@ export class PriceService {
 
   protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
     if (res.body) {
-      res.body.createdAt = res.body.createdAt ? moment(res.body.createdAt) : undefined;
+      res.body.createdDate = res.body.createdDate ? moment(res.body.createdDate) : undefined;
       res.body.lastUpdatedAt = res.body.lastUpdatedAt ? moment(res.body.lastUpdatedAt) : undefined;
     }
     return res;
@@ -67,7 +67,7 @@ export class PriceService {
   protected convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
     if (res.body) {
       res.body.forEach((price: IPrice) => {
-        price.createdAt = price.createdAt ? moment(price.createdAt) : undefined;
+        price.createdDate = price.createdDate ? moment(price.createdDate) : undefined;
         price.lastUpdatedAt = price.lastUpdatedAt ? moment(price.lastUpdatedAt) : undefined;
       });
     }

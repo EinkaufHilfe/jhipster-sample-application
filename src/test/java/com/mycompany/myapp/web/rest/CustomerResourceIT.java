@@ -144,7 +144,7 @@ public class CustomerResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(customer.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
             .andExpect(jsonPath("$.[*].createdBy").value(hasItem(DEFAULT_CREATED_BY)))
-            .andExpect(jsonPath("$.[*].createdAt").value(is(notNullValue())))
+            .andExpect(jsonPath("$.[*].createdDate").value(is(notNullValue())))
             .andExpect(jsonPath("$.[*].lastModifiedBy").value(hasItem(DEFAULT_LAST_UPDATED_BY)))
             .andExpect(jsonPath("$.[*].lastUpdatedAt").value(is(notNullValue())));
     }
@@ -163,7 +163,7 @@ public class CustomerResourceIT {
             .andExpect(jsonPath("$.id").value(customer.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
             .andExpect(jsonPath("$.createdBy").value(DEFAULT_CREATED_BY))
-            .andExpect(jsonPath("$.createdAt").value(is(notNullValue())))
+            .andExpect(jsonPath("$.createdDate").value(is(notNullValue())))
             .andExpect(jsonPath("$.lastModifiedBy").value(DEFAULT_LAST_UPDATED_BY))
             .andExpect(jsonPath("$.lastUpdatedAt").value(is(notNullValue())));
     }
@@ -190,7 +190,7 @@ public class CustomerResourceIT {
         //        updatedCustomer
         //            .name(UPDATED_NAME)
         //            .createdBy(UPDATED_CREATED_BY)
-        //            .createdAt(UPDATED_CREATED_AT)
+        //            .createdDate(UPDATED_CREATED_AT)
         //            .lastModifiedBy(UPDATED_LAST_UPDATED_BY)
         //            .lastUpdatedAt(UPDATED_LAST_UPDATED_AT);
 

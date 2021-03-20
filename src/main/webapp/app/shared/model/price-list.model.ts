@@ -11,7 +11,7 @@ export interface IPriceList {
   validTill?: Moment;
   type?: string;
   createdBy?: string;
-  createdAt?: Moment;
+  createdDate?: Moment;
   lastModifiedBy?: string;
   lastUpdatedAt?: Moment;
   conditions?: IConditionDefinition[];
@@ -28,7 +28,7 @@ export class PriceList implements IPriceList {
     public validTill?: Moment,
     public type?: string,
     public createdBy?: string,
-    public createdAt?: Moment,
+    public createdDate?: Moment,
     public lastModifiedBy?: string,
     public lastUpdatedAt?: Moment,
     public conditions?: IConditionDefinition[],

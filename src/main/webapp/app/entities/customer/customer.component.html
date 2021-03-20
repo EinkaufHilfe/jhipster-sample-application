@@ -25,7 +25,7 @@
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
                     <th scope="col" ><span jhiTranslate="application.customer.name">Name</span></th>
                     <th scope="col" ><span jhiTranslate="application.customer.createdBy">Created By</span></th>
-                    <th scope="col" ><span jhiTranslate="application.customer.createdAt">Created At</span></th>
+                    <th scope="col" ><span jhiTranslate="application.customer.createdDate">Created At</span></th>
                     <th scope="col" ><span jhiTranslate="application.customer.lastModifiedBy">Last Updated By</span></th>
                     <th scope="col" ><span jhiTranslate="application.customer.lastUpdatedAt">Last Updated At</span></th>
                     <th scope="col"></th>
@@ -36,7 +36,7 @@
                     <td><a [routerLink]="['/customer', customer.id, 'view']">{{ customer.id }}</a></td>
                     <td>{{ customer.name }}</td>
                     <td>{{ customer.createdBy }}</td>
-                    <td>{{ customer.createdAt | date:'medium' }}</td>
+                    <td>{{ customer.createdDate | date:'medium' }}</td>
                     <td>{{ customer.lastModifiedBy }}</td>
                     <td>{{ customer.lastUpdatedAt | date:'medium' }}</td>
                     <td class="text-right">

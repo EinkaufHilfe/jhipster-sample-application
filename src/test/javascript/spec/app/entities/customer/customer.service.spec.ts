@@ -31,7 +31,7 @@ describe('Service Tests', () => {
       it('should find an element', () => {
         const returnedFromService = Object.assign(
           {
-            createdAt: currentDate.format(DATE_TIME_FORMAT),
+            createdDate: currentDate.format(DATE_TIME_FORMAT),
             lastUpdatedAt: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
@@ -48,7 +48,7 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             id: 0,
-            createdAt: currentDate.format(DATE_TIME_FORMAT),
+            createdDate: currentDate.format(DATE_TIME_FORMAT),
             lastUpdatedAt: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
@@ -56,7 +56,7 @@ describe('Service Tests', () => {
 
         const expected = Object.assign(
           {
-            createdAt: currentDate,
+            createdDate: currentDate,
             lastUpdatedAt: currentDate,
           },
           returnedFromService
@@ -74,7 +74,7 @@ describe('Service Tests', () => {
           {
             name: 'BBBBBB',
             createdBy: 'BBBBBB',
-            createdAt: currentDate.format(DATE_TIME_FORMAT),
+            createdDate: currentDate.format(DATE_TIME_FORMAT),
             lastModifiedBy: 'BBBBBB',
             lastUpdatedAt: currentDate.format(DATE_TIME_FORMAT),
           },
@@ -83,7 +83,7 @@ describe('Service Tests', () => {
 
         const expected = Object.assign(
           {
-            createdAt: currentDate,
+            createdDate: currentDate,
             lastUpdatedAt: currentDate,
           },
           returnedFromService
@@ -101,7 +101,7 @@ describe('Service Tests', () => {
           {
             name: 'BBBBBB',
             createdBy: 'BBBBBB',
-            createdAt: currentDate.format(DATE_TIME_FORMAT),
+            createdDate: currentDate.format(DATE_TIME_FORMAT),
             lastModifiedBy: 'BBBBBB',
             lastUpdatedAt: currentDate.format(DATE_TIME_FORMAT),
           },
@@ -110,7 +110,7 @@ describe('Service Tests', () => {
 
         const expected = Object.assign(
           {
-            createdAt: currentDate,
+            createdDate: currentDate,
             lastUpdatedAt: currentDate,
           },
           returnedFromService

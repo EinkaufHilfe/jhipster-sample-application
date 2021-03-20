@@ -50,7 +50,7 @@ export class DeductionService {
 
   protected convertDateFromClient(deduction: IDeduction): IDeduction {
     const copy: IDeduction = Object.assign({}, deduction, {
-      createdAt: deduction.createdAt && deduction.createdAt.isValid() ? deduction.createdAt.toJSON() : undefined,
+      createdDate: deduction.createdDate && deduction.createdDate.isValid() ? deduction.createdDate.toJSON() : undefined,
       lastUpdatedAt: deduction.lastUpdatedAt && deduction.lastUpdatedAt.isValid() ? deduction.lastUpdatedAt.toJSON() : undefined,
     });
     return copy;
@@ -58,7 +58,7 @@ export class DeductionService {
 
   protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
     if (res.body) {
-      res.body.createdAt = res.body.createdAt ? moment(res.body.createdAt) : undefined;
+      res.body.createdDate = res.body.createdDate ? moment(res.body.createdDate) : undefined;
       res.body.lastUpdatedAt = res.body.lastUpdatedAt ? moment(res.body.lastUpdatedAt) : undefined;
     }
     return res;
@@ -67,7 +67,7 @@ export class DeductionService {
   protected convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
     if (res.body) {
       res.body.forEach((deduction: IDeduction) => {
-        deduction.createdAt = deduction.createdAt ? moment(deduction.createdAt) : undefined;
+        deduction.createdDate = deduction.createdDate ? moment(deduction.createdDate) : undefined;
         deduction.lastUpdatedAt = deduction.lastUpdatedAt ? moment(deduction.lastUpdatedAt) : undefined;
       });
     }

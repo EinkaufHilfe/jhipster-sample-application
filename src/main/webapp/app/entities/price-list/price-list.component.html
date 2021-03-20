@@ -27,7 +27,7 @@
                     <th scope="col" ><span jhiTranslate="application.priceList.validTill">Valid Till</span></th>
                     <th scope="col" ><span jhiTranslate="application.priceList.type">Type</span></th>
                     <th scope="col" ><span jhiTranslate="application.priceList.createdBy">Created By</span></th>
-                    <th scope="col" ><span jhiTranslate="application.priceList.createdAt">Created At</span></th>
+                    <th scope="col" ><span jhiTranslate="application.priceList.createdDate">Created At</span></th>
                     <th scope="col" ><span jhiTranslate="application.priceList.lastModifiedBy">Last Updated By</span></th>
                     <th scope="col" ><span jhiTranslate="application.priceList.lastUpdatedAt">Last Updated At</span></th>
                     <th scope="col" ><span jhiTranslate="application.priceList.customer">Customer</span></th>
@@ -41,7 +41,7 @@
                     <td>{{ priceList.validTill | date:'mediumDate' }}</td>
                     <td>{{ priceList.type }}</td>
                     <td>{{ priceList.createdBy }}</td>
-                    <td>{{ priceList.createdAt | date:'medium' }}</td>
+                    <td>{{ priceList.createdDate | date:'medium' }}</td>
                     <td>{{ priceList.lastModifiedBy }}</td>
                     <td>{{ priceList.lastUpdatedAt | date:'medium' }}</td>
                     <td>

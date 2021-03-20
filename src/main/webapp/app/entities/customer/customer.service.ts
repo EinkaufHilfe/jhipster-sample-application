@@ -50,7 +50,7 @@ export class CustomerService {
 
   protected convertDateFromClient(customer: ICustomer): ICustomer {
     const copy: ICustomer = Object.assign({}, customer, {
-      createdAt: customer.createdAt && customer.createdAt.isValid() ? customer.createdAt.toJSON() : undefined,
+      createdDate: customer.createdDate && customer.createdDate.isValid() ? customer.createdDate.toJSON() : undefined,
       lastUpdatedAt: customer.lastUpdatedAt && customer.lastUpdatedAt.isValid() ? customer.lastUpdatedAt.toJSON() : undefined,
     });
     return copy;
@@ -58,7 +58,7 @@ export class CustomerService {
 
   protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
     if (res.body) {
-      res.body.createdAt = res.body.createdAt ? moment(res.body.createdAt) : undefined;
+      res.body.createdDate = res.body.createdDate ? moment(res.body.createdDate) : undefined;
       res.body.lastUpdatedAt = res.body.lastUpdatedAt ? moment(res.body.lastUpdatedAt) : undefined;
     }
     return res;
@@ -67,7 +67,7 @@ export class CustomerService {
   protected convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
     if (res.body) {
       res.body.forEach((customer: ICustomer) => {
-        customer.createdAt = customer.createdAt ? moment(customer.createdAt) : undefined;
+        customer.createdDate = customer.createdDate ? moment(customer.createdDate) : undefined;
         customer.lastUpdatedAt = customer.lastUpdatedAt ? moment(customer.lastUpdatedAt) : undefined;
       });
     }

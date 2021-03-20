@@ -19,7 +19,7 @@
       "definition": "Definition",
       "description": "Description",
       "createdBy": "Created By",
-      "createdAt": "Created At",
+      "createdDate": "Created At",
       "lastModifiedBy": "Last Updated By",
       "lastUpdatedAt": "Last Updated At",
       "priceList": "Price List"

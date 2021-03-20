@@ -53,7 +53,7 @@ export class PriceListService {
     const copy: IPriceList = Object.assign({}, priceList, {
       validFrom: priceList.validFrom && priceList.validFrom.isValid() ? priceList.validFrom.format(DATE_FORMAT) : undefined,
       validTill: priceList.validTill && priceList.validTill.isValid() ? priceList.validTill.format(DATE_FORMAT) : undefined,
-      createdAt: priceList.createdAt && priceList.createdAt.isValid() ? priceList.createdAt.toJSON() : undefined,
+      createdDate: priceList.createdDate && priceList.createdDate.isValid() ? priceList.createdDate.toJSON() : undefined,
       lastUpdatedAt: priceList.lastUpdatedAt && priceList.lastUpdatedAt.isValid() ? priceList.lastUpdatedAt.toJSON() : undefined,
     });
     return copy;
@@ -63,7 +63,7 @@ export class PriceListService {
     if (res.body) {
       res.body.validFrom = res.body.validFrom ? moment(res.body.validFrom) : undefined;
       res.body.validTill = res.body.validTill ? moment(res.body.validTill) : undefined;
-      res.body.createdAt = res.body.createdAt ? moment(res.body.createdAt) : undefined;
+      res.body.createdDate = res.body.createdDate ? moment(res.body.createdDate) : undefined;
       res.body.lastUpdatedAt = res.body.lastUpdatedAt ? moment(res.body.lastUpdatedAt) : undefined;
     }
     return res;
@@ -74,7 +74,7 @@ export class PriceListService {
       res.body.forEach((priceList: IPriceList) => {
         priceList.validFrom = priceList.validFrom ? moment(priceList.validFrom) : undefined;
         priceList.validTill = priceList.validTill ? moment(priceList.validTill) : undefined;
-        priceList.createdAt = priceList.createdAt ? moment(priceList.createdAt) : undefined;
+        priceList.createdDate = priceList.createdDate ? moment(priceList.createdDate) : undefined;
         priceList.lastUpdatedAt = priceList.lastUpdatedAt ? moment(priceList.lastUpdatedAt) : undefined;
       });
     }

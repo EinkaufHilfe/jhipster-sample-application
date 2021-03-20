@@ -6,7 +6,7 @@ export interface IDeduction {
   reason?: string;
   price?: number;
   createdBy?: string;
-  createdAt?: Moment;
+  createdDate?: Moment;
   lastModifiedBy?: string;
   lastUpdatedAt?: Moment;
   priceList?: IPriceList;
@@ -18,7 +18,7 @@ export class Deduction implements IDeduction {
     public reason?: string,
     public price?: number,
     public createdBy?: string,
-    public createdAt?: Moment,
+    public createdDate?: Moment,
     public lastModifiedBy?: string,
     public lastUpdatedAt?: Moment,
     public priceList?: IPriceList

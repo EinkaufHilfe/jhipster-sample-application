@@ -50,8 +50,8 @@ export class ConditionDefinitionService {
 
   protected convertDateFromClient(conditionDefinition: IConditionDefinition): IConditionDefinition {
     const copy: IConditionDefinition = Object.assign({}, conditionDefinition, {
-      createdAt:
-        conditionDefinition.createdAt && conditionDefinition.createdAt.isValid() ? conditionDefinition.createdAt.toJSON() : undefined,
+      createdDate:
+        conditionDefinition.createdDate && conditionDefinition.createdDate.isValid() ? conditionDefinition.createdDate.toJSON() : undefined,
       lastUpdatedAt:
         conditionDefinition.lastUpdatedAt && conditionDefinition.lastUpdatedAt.isValid()
           ? conditionDefinition.lastUpdatedAt.toJSON()
@@ -62,7 +62,7 @@ export class ConditionDefinitionService {
 
   protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
     if (res.body) {
-      res.body.createdAt = res.body.createdAt ? moment(res.body.createdAt) : undefined;
+      res.body.createdDate = res.body.createdDate ? moment(res.body.createdDate) : undefined;
       res.body.lastUpdatedAt = res.body.lastUpdatedAt ? moment(res.body.lastUpdatedAt) : undefined;
     }
     return res;
@@ -71,7 +71,7 @@ export class ConditionDefinitionService {
   protected convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
     if (res.body) {
       res.body.forEach((conditionDefinition: IConditionDefinition) => {
-        conditionDefinition.createdAt = conditionDefinition.createdAt ? moment(conditionDefinition.createdAt) : undefined;
+        conditionDefinition.createdDate = conditionDefinition.createdDate ? moment(conditionDefinition.createdDate) : undefined;
         conditionDefinition.lastUpdatedAt = conditionDefinition.lastUpdatedAt ? moment(conditionDefinition.lastUpdatedAt) : undefined;
       });
     }

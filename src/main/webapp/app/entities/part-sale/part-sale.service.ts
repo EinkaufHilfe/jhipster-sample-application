@@ -50,7 +50,7 @@ export class PartSaleService {
 
   protected convertDateFromClient(partSale: IPartSale): IPartSale {
     const copy: IPartSale = Object.assign({}, partSale, {
-      createdAt: partSale.createdAt && partSale.createdAt.isValid() ? partSale.createdAt.toJSON() : undefined,
+      createdDate: partSale.createdDate && partSale.createdDate.isValid() ? partSale.createdDate.toJSON() : undefined,
       lastUpdatedAt: partSale.lastUpdatedAt && partSale.lastUpdatedAt.isValid() ? partSale.lastUpdatedAt.toJSON() : undefined,
     });
     return copy;
@@ -58,7 +58,7 @@ export class PartSaleService {
 
   protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
     if (res.body) {
-      res.body.createdAt = res.body.createdAt ? moment(res.body.createdAt) : undefined;
+      res.body.createdDate = res.body.createdDate ? moment(res.body.createdDate) : undefined;
       res.body.lastUpdatedAt = res.body.lastUpdatedAt ? moment(res.body.lastUpdatedAt) : undefined;
     }
     return res;
@@ -67,7 +67,7 @@ export class PartSaleService {
   protected convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
     if (res.body) {
       res.body.forEach((partSale: IPartSale) => {
-        partSale.createdAt = partSale.createdAt ? moment(partSale.createdAt) : undefined;
+        partSale.createdDate = partSale.createdDate ? moment(partSale.createdDate) : undefined;
         partSale.lastUpdatedAt = partSale.lastUpdatedAt ? moment(partSale.lastUpdatedAt) : undefined;
       });
     }
