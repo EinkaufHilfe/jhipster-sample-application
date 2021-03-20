@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-deduction-heading" jhiTranslate="application.deduction.home.createOrEditLabel">Create or edit a Deduction</h2>
+            <h2 id="jhi-deduction-heading" jhiTranslate="myApp.deduction.home.createOrEditLabel">Create or edit a Deduction</h2>
 
             <div>
                 <jhi-alert-error></jhi-alert-error>
@@ -12,45 +12,45 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="application.deduction.reason" for="field_reason">Reason</label>
+                    <label class="form-control-label" jhiTranslate="myApp.deduction.reason" for="field_reason">Reason</label>
                     <input type="text" class="form-control" name="reason" id="field_reason"
                            formControlName="reason"/>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="application.deduction.price" for="field_price">Price</label>
+                    <label class="form-control-label" jhiTranslate="myApp.deduction.price" for="field_price">Price</label>
                     <input type="number" class="form-control" name="price" id="field_price"
                            formControlName="price"/>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="application.deduction.createdBy" for="field_createdBy">Created By</label>
+                    <label class="form-control-label" jhiTranslate="myApp.deduction.createdBy" for="field_createdBy">Created By</label>
                     <input type="text" class="form-control" name="createdBy" id="field_createdBy"
                            formControlName="createdBy"/>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="application.deduction.createdDate" for="field_createdAt">Created Date</label>
+                    <label class="form-control-label" jhiTranslate="myApp.deduction.createdDate" for="field_createdAt">Created Date</label>
                     <div class="d-flex">
                         <input id="field_createdAt" type="datetime-local" class="form-control" name="createdDate" formControlName="createdDate" placeholder="YYYY-MM-DD HH:mm"/>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="application.deduction.lastModifiedBy" for="field_lastUpdatedBy">Last Modified By</label>
+                    <label class="form-control-label" jhiTranslate="myApp.deduction.lastModifiedBy" for="field_lastUpdatedBy">Last Modified By</label>
                     <input type="text" class="form-control" name="lastModifiedBy" id="field_lastUpdatedBy"
                            formControlName="lastModifiedBy"/>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="application.deduction.lastModifiedDate" for="field_lastUpdatedAt">Last Modified Date</label>
+                    <label class="form-control-label" jhiTranslate="myApp.deduction.lastModifiedDate" for="field_lastUpdatedAt">Last Modified Date</label>
                     <div class="d-flex">
                         <input id="field_lastUpdatedAt" type="datetime-local" class="form-control" name="lastModifiedDate" formControlName="lastModifiedDate" placeholder="YYYY-MM-DD HH:mm"/>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="application.deduction.priceList" for="field_priceList">Price List</label>
+                    <label class="form-control-label" jhiTranslate="myApp.deduction.priceList" for="field_priceList">Price List</label>
                     <select class="form-control" id="field_priceList" name="priceList" formControlName="priceList">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="priceListOption.id === editForm.get('priceList')!.value?.id ? editForm.get('priceList')!.value : priceListOption" *ngFor="let priceListOption of pricelists; trackBy: trackById">{{ priceListOption.id }}</option>

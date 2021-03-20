@@ -41,7 +41,7 @@ export const customerRoute: Routes = [
     component: CustomerComponent,
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'application.customer.home.title',
+      pageTitle: 'myApp.customer.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -53,7 +53,7 @@ export const customerRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'application.customer.home.title',
+      pageTitle: 'myApp.customer.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -65,7 +65,7 @@ export const customerRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'application.customer.home.title',
+      pageTitle: 'myApp.customer.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -77,7 +77,7 @@ export const customerRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'application.customer.home.title',
+      pageTitle: 'myApp.customer.home.title',
     },
     canActivate: [UserRouteAccessService],
   },

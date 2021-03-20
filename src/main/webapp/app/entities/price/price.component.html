@@ -1,10 +1,10 @@
 <div>
     <h2 id="page-heading">
-        <span jhiTranslate="application.price.home.title">Prices</span>
+        <span jhiTranslate="myApp.price.home.title">Prices</span>
 
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-price" [routerLink]="['/price/new']">
             <fa-icon icon="plus"></fa-icon>
-            <span  jhiTranslate="application.price.home.createLabel">
+            <span  jhiTranslate="myApp.price.home.createLabel">
             Create a new Price
             </span>
         </button>
@@ -15,7 +15,7 @@
     <jhi-alert></jhi-alert>
 
     <div class="alert alert-warning" id="no-result" *ngIf="prices?.length === 0">
-        <span jhiTranslate="application.price.home.notFound">No prices found</span>
+        <span jhiTranslate="myApp.price.home.notFound">No prices found</span>
     </div>
 
     <div class="table-responsive" id="entities" *ngIf="prices && prices.length > 0">
@@ -23,14 +23,14 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="application.price.model">Model</span></th>
-                    <th scope="col" ><span jhiTranslate="application.price.condition">Condition</span></th>
-                    <th scope="col" ><span jhiTranslate="application.price.price">Price</span></th>
-                    <th scope="col" ><span jhiTranslate="application.price.createdBy">Created By</span></th>
-                    <th scope="col" ><span jhiTranslate="application.price.createdDate">Created Date</span></th>
-                    <th scope="col" ><span jhiTranslate="application.price.lastModifiedBy">Last Modified By</span></th>
-                    <th scope="col" ><span jhiTranslate="application.price.lastModifiedDate">Last Modified Date</span></th>
-                    <th scope="col" ><span jhiTranslate="application.price.priceList">Price List</span></th>
+                    <th scope="col" ><span jhiTranslate="myApp.price.model">Model</span></th>
+                    <th scope="col" ><span jhiTranslate="myApp.price.condition">Condition</span></th>
+                    <th scope="col" ><span jhiTranslate="myApp.price.price">Price</span></th>
+                    <th scope="col" ><span jhiTranslate="myApp.price.createdBy">Created By</span></th>
+                    <th scope="col" ><span jhiTranslate="myApp.price.createdDate">Created Date</span></th>
+                    <th scope="col" ><span jhiTranslate="myApp.price.lastModifiedBy">Last Modified By</span></th>
+                    <th scope="col" ><span jhiTranslate="myApp.price.lastModifiedDate">Last Modified Date</span></th>
+                    <th scope="col" ><span jhiTranslate="myApp.price.priceList">Price List</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>

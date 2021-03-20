@@ -1,5 +1,5 @@
 {
-  "application": {
+  "myApp": {
     "conditionDefinition": {
       "home": {
         "title": "Condition Definitions",

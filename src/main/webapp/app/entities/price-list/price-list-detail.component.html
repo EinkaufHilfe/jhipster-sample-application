@@ -1,22 +1,22 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="priceList">
-            <h2><span jhiTranslate="application.priceList.detail.title">Price List</span> {{ priceList.id }}</h2>
+            <h2><span jhiTranslate="myApp.priceList.detail.title">Price List</span> {{ priceList.id }}</h2>
 
             <hr>
 
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="application.priceList.validFrom">Valid From</span></dt>
+                <dt><span jhiTranslate="myApp.priceList.validFrom">Valid From</span></dt>
                 <dd>
                     <span>{{ priceList.validFrom }}</span>
                 </dd>
-                <dt><span jhiTranslate="application.priceList.validTill">Valid Till</span></dt>
+                <dt><span jhiTranslate="myApp.priceList.validTill">Valid Till</span></dt>
                 <dd>
                     <span>{{ priceList.validTill }}</span>
                 </dd>
-                <dt><span jhiTranslate="application.priceList.type">Type</span></dt>
+                <dt><span jhiTranslate="myApp.priceList.type">Type</span></dt>
                 <dd>
                     <span>{{ priceList.type }}</span>
                 </dd>

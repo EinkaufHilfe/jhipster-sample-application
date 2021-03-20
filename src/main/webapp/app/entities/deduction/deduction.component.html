@@ -1,10 +1,10 @@
 <div>
     <h2 id="page-heading">
-        <span jhiTranslate="application.deduction.home.title">Deductions</span>
+        <span jhiTranslate="myApp.deduction.home.title">Deductions</span>
 
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-deduction" [routerLink]="['/deduction/new']">
             <fa-icon icon="plus"></fa-icon>
-            <span  jhiTranslate="application.deduction.home.createLabel">
+            <span  jhiTranslate="myApp.deduction.home.createLabel">
             Create a new Deduction
             </span>
         </button>
@@ -15,7 +15,7 @@
     <jhi-alert></jhi-alert>
 
     <div class="alert alert-warning" id="no-result" *ngIf="deductions?.length === 0">
-        <span jhiTranslate="application.deduction.home.notFound">No deductions found</span>
+        <span jhiTranslate="myApp.deduction.home.notFound">No deductions found</span>
     </div>
 
     <div class="table-responsive" id="entities" *ngIf="deductions && deductions.length > 0">
@@ -23,13 +23,13 @@
             <thead>
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="application.deduction.reason">Reason</span></th>
-                    <th scope="col" ><span jhiTranslate="application.deduction.price">Price</span></th>
-                    <th scope="col" ><span jhiTranslate="application.deduction.createdBy">Created By</span></th>
-                    <th scope="col" ><span jhiTranslate="application.deduction.createdDate">Created Date</span></th>
-                    <th scope="col" ><span jhiTranslate="application.deduction.lastModifiedBy">Last Modified By</span></th>
-                    <th scope="col" ><span jhiTranslate="application.deduction.lastModifiedDate">Last Modified Date</span></th>
-                    <th scope="col" ><span jhiTranslate="application.deduction.priceList">Price List</span></th>
+                    <th scope="col" ><span jhiTranslate="myApp.deduction.reason">Reason</span></th>
+                    <th scope="col" ><span jhiTranslate="myApp.deduction.price">Price</span></th>
+                    <th scope="col" ><span jhiTranslate="myApp.deduction.createdBy">Created By</span></th>
+                    <th scope="col" ><span jhiTranslate="myApp.deduction.createdDate">Created Date</span></th>
+                    <th scope="col" ><span jhiTranslate="myApp.deduction.lastModifiedBy">Last Modified By</span></th>
+                    <th scope="col" ><span jhiTranslate="myApp.deduction.lastModifiedDate">Last Modified Date</span></th>
+                    <th scope="col" ><span jhiTranslate="myApp.deduction.priceList">Price List</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>

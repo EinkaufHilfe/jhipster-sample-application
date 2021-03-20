@@ -1,38 +1,38 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="deduction">
-            <h2><span jhiTranslate="application.deduction.detail.title">Deduction</span> {{ deduction.id }}</h2>
+            <h2><span jhiTranslate="myApp.deduction.detail.title">Deduction</span> {{ deduction.id }}</h2>
 
             <hr>
 
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="application.deduction.reason">Reason</span></dt>
+                <dt><span jhiTranslate="myApp.deduction.reason">Reason</span></dt>
                 <dd>
                     <span>{{ deduction.reason }}</span>
                 </dd>
-                <dt><span jhiTranslate="application.deduction.price">Price</span></dt>
+                <dt><span jhiTranslate="myApp.deduction.price">Price</span></dt>
                 <dd>
                     <span>{{ deduction.price }}</span>
                 </dd>
-                <dt><span jhiTranslate="application.deduction.createdBy">Created By</span></dt>
+                <dt><span jhiTranslate="myApp.deduction.createdBy">Created By</span></dt>
                 <dd>
                     <span>{{ deduction.createdBy }}</span>
                 </dd>
-                <dt><span jhiTranslate="application.deduction.createdDate">Created Date</span></dt>
+                <dt><span jhiTranslate="myApp.deduction.createdDate">Created Date</span></dt>
                 <dd>
                     <span>{{ deduction.createdDate }}</span>
                 </dd>
-                <dt><span jhiTranslate="application.deduction.lastModifiedBy">Last Modified By</span></dt>
+                <dt><span jhiTranslate="myApp.deduction.lastModifiedBy">Last Modified By</span></dt>
                 <dd>
                     <span>{{ deduction.lastModifiedBy }}</span>
                 </dd>
-                <dt><span jhiTranslate="application.deduction.lastModifiedDate">Last Modified Date</span></dt>
+                <dt><span jhiTranslate="myApp.deduction.lastModifiedDate">Last Modified Date</span></dt>
                 <dd>
                     <span>{{ deduction.lastModifiedDate }}</span>
                 </dd>
-                <dt><span jhiTranslate="application.deduction.priceList">Price List</span></dt>
+                <dt><span jhiTranslate="myApp.deduction.priceList">Price List</span></dt>
                 <dd>
                     <div *ngIf="deduction.priceList">
                         <a [routerLink]="['/price-list', deduction.priceList?.id, 'view']">{{ deduction.priceList?.id }}</a>

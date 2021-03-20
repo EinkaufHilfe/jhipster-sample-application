@@ -40,7 +40,7 @@ export const priceRoute: Routes = [
     component: PriceComponent,
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'application.price.home.title',
+      pageTitle: 'myApp.price.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -52,7 +52,7 @@ export const priceRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'application.price.home.title',
+      pageTitle: 'myApp.price.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -64,7 +64,7 @@ export const priceRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'application.price.home.title',
+      pageTitle: 'myApp.price.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -76,7 +76,7 @@ export const priceRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'application.price.home.title',
+      pageTitle: 'myApp.price.home.title',
     },
     canActivate: [UserRouteAccessService],
   },

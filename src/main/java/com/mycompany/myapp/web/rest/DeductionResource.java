@@ -1,7 +1,7 @@
 package com.mycompany.myapp.web.rest;
 
 import com.mycompany.myapp.domain.Deduction;
-import com.mycompany.myapp.repository.DeductionRepository;
+import com.mycompany.myapp.service.DeductionService;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -27,11 +27,11 @@ public class DeductionResource {
 
     private static final String ENTITY_NAME = "deduction";
 
-    private final DeductionRepository deductionRepository;
+    private final DeductionService deductionService;
     private final HeaderUtil headerUtil;
 
-    public DeductionResource(DeductionRepository deductionRepository, HeaderUtil headerUtil) {
-        this.deductionRepository = deductionRepository;
+    public DeductionResource(DeductionService deductionService, HeaderUtil headerUtil) {
+        this.deductionService = deductionService;
         this.headerUtil = headerUtil;
     }
 
@@ -48,7 +48,7 @@ public class DeductionResource {
         if (deduction.getId() != null) {
             throw new BadRequestAlertException("A new deduction cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        Deduction result = deductionRepository.save(deduction);
+        Deduction result = deductionService.save(deduction);
         return ResponseEntity
             .created(new URI("/api/deductions/" + result.getId()))
             .headers(headerUtil.createEntityCreationAlert(true, ENTITY_NAME, result.getId().toString()))
@@ -69,7 +69,7 @@ public class DeductionResource {
         if (deduction.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        Deduction result = deductionRepository.save(deduction);
+        Deduction result = deductionService.save(deduction);
         return ResponseEntity
             .ok()
             .headers(headerUtil.createEntityUpdateAlert(true, ENTITY_NAME, deduction.getId().toString()))
@@ -84,7 +84,7 @@ public class DeductionResource {
     @GetMapping("/deductions")
     public List<Deduction> getAllDeductions() {
         log.debug("REST request to get all Deductions");
-        return deductionRepository.findAll();
+        return deductionService.findAll();
     }
 
     /**
@@ -96,7 +96,7 @@ public class DeductionResource {
     @GetMapping("/deductions/{id}")
     public ResponseEntity<Deduction> getDeduction(@PathVariable Long id) {
         log.debug("REST request to get Deduction : {}", id);
-        Optional<Deduction> deduction = deductionRepository.findById(id);
+        Optional<Deduction> deduction = deductionService.findById(id);
         return ResponseUtil.wrapOrNotFound(deduction);
     }
 
@@ -109,7 +109,7 @@ public class DeductionResource {
     @DeleteMapping("/deductions/{id}")
     public ResponseEntity<Void> deleteDeduction(@PathVariable Long id) {
         log.debug("REST request to delete Deduction : {}", id);
-        deductionRepository.deleteById(id);
+        deductionService.deleteById(id);
         return ResponseEntity.noContent().headers(headerUtil.createEntityDeletionAlert(true, ENTITY_NAME, id.toString())).build();
     }
 }

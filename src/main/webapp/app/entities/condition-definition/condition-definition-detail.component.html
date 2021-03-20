@@ -1,38 +1,38 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="conditionDefinition">
-            <h2><span jhiTranslate="application.conditionDefinition.detail.title">Condition Definition</span> {{ conditionDefinition.id }}</h2>
+            <h2><span jhiTranslate="myApp.conditionDefinition.detail.title">Condition Definition</span> {{ conditionDefinition.id }}</h2>
 
             <hr>
 
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="application.conditionDefinition.definition">Definition</span></dt>
+                <dt><span jhiTranslate="myApp.conditionDefinition.definition">Definition</span></dt>
                 <dd>
                     <span>{{ conditionDefinition.definition }}</span>
                 </dd>
-                <dt><span jhiTranslate="application.conditionDefinition.description">Description</span></dt>
+                <dt><span jhiTranslate="myApp.conditionDefinition.description">Description</span></dt>
                 <dd>
                     <span>{{ conditionDefinition.description }}</span>
                 </dd>
-                <dt><span jhiTranslate="application.conditionDefinition.createdBy">Created By</span></dt>
+                <dt><span jhiTranslate="myApp.conditionDefinition.createdBy">Created By</span></dt>
                 <dd>
                     <span>{{ conditionDefinition.createdBy }}</span>
                 </dd>
-                <dt><span jhiTranslate="application.conditionDefinition.createdDate">Created Date</span></dt>
+                <dt><span jhiTranslate="myApp.conditionDefinition.createdDate">Created Date</span></dt>
                 <dd>
                     <span>{{ conditionDefinition.createdDate }}</span>
                 </dd>
-                <dt><span jhiTranslate="application.conditionDefinition.lastModifiedBy">Last Modified By</span></dt>
+                <dt><span jhiTranslate="myApp.conditionDefinition.lastModifiedBy">Last Modified By</span></dt>
                 <dd>
                     <span>{{ conditionDefinition.lastModifiedBy }}</span>
                 </dd>
-                <dt><span jhiTranslate="application.conditionDefinition.lastModifiedDate">Last Modified Date</span></dt>
+                <dt><span jhiTranslate="myApp.conditionDefinition.lastModifiedDate">Last Modified Date</span></dt>
                 <dd>
                     <span>{{ conditionDefinition.lastModifiedDate }}</span>
                 </dd>
-                <dt><span jhiTranslate="application.conditionDefinition.priceList">Price List</span></dt>
+                <dt><span jhiTranslate="myApp.conditionDefinition.priceList">Price List</span></dt>
                 <dd>
                     <div *ngIf="conditionDefinition.priceList">
                         <a [routerLink]="['/price-list', conditionDefinition.priceList?.id, 'view']">{{ conditionDefinition.priceList?.id }}</a>
