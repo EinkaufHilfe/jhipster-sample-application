@@ -21,7 +21,7 @@
       "type": "Type",
       "createdBy": "Created By",
       "createdAt": "Created At",
-      "lastUpdatedBy": "Last Updated By",
+      "lastModifiedBy": "Last Updated By",
       "lastUpdatedAt": "Last Updated At",
       "condition": "Condition",
       "deduction": "Deduction",

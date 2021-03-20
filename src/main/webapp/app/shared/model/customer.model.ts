@@ -6,7 +6,7 @@ export interface ICustomer {
   name?: string;
   createdBy?: string;
   createdAt?: Moment;
-  lastUpdatedBy?: string;
+  lastModifiedBy?: string;
   lastUpdatedAt?: Moment;
   priceLists?: IPriceList[];
 }
@@ -17,7 +17,7 @@ export class Customer implements ICustomer {
     public name?: string,
     public createdBy?: string,
     public createdAt?: Moment,
-    public lastUpdatedBy?: string,
+    public lastModifiedBy?: string,
     public lastUpdatedAt?: Moment,
     public priceLists?: IPriceList[]
   ) {}

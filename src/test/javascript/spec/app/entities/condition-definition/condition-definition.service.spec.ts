@@ -76,7 +76,7 @@ describe('Service Tests', () => {
             description: 'BBBBBB',
             createdBy: 'BBBBBB',
             createdAt: currentDate.format(DATE_TIME_FORMAT),
-            lastUpdatedBy: 'BBBBBB',
+            lastModifiedBy: 'BBBBBB',
             lastUpdatedAt: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
@@ -104,7 +104,7 @@ describe('Service Tests', () => {
             description: 'BBBBBB',
             createdBy: 'BBBBBB',
             createdAt: currentDate.format(DATE_TIME_FORMAT),
-            lastUpdatedBy: 'BBBBBB',
+            lastModifiedBy: 'BBBBBB',
             lastUpdatedAt: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault

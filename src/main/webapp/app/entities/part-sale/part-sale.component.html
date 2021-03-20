@@ -27,7 +27,7 @@
                     <th scope="col" ><span jhiTranslate="application.partSale.price">Price</span></th>
                     <th scope="col" ><span jhiTranslate="application.partSale.createdBy">Created By</span></th>
                     <th scope="col" ><span jhiTranslate="application.partSale.createdAt">Created At</span></th>
-                    <th scope="col" ><span jhiTranslate="application.partSale.lastUpdatedBy">Last Updated By</span></th>
+                    <th scope="col" ><span jhiTranslate="application.partSale.lastModifiedBy">Last Updated By</span></th>
                     <th scope="col" ><span jhiTranslate="application.partSale.lastUpdatedAt">Last Updated At</span></th>
                     <th scope="col" ><span jhiTranslate="application.partSale.priceList">Price List</span></th>
                     <th scope="col"></th>
@@ -40,7 +40,7 @@
                     <td>{{ partSale.price }}</td>
                     <td>{{ partSale.createdBy }}</td>
                     <td>{{ partSale.createdAt | date:'medium' }}</td>
-                    <td>{{ partSale.lastUpdatedBy }}</td>
+                    <td>{{ partSale.lastModifiedBy }}</td>
                     <td>{{ partSale.lastUpdatedAt | date:'medium' }}</td>
                     <td>
                         <div *ngIf="partSale.priceList">

@@ -147,4 +147,4 @@ Desktop.ini
 ######################
 .eslintcache
 
-src/main/resources/.h2.server.properties
+.h2.server.properties

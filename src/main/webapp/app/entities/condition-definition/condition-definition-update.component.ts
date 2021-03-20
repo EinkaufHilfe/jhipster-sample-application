@@ -26,7 +26,7 @@ export class ConditionDefinitionUpdateComponent implements OnInit {
     description: [],
     createdBy: [],
     createdAt: [],
-    lastUpdatedBy: [],
+    lastModifiedBy: [],
     lastUpdatedAt: [],
     priceList: [],
   });
@@ -59,7 +59,7 @@ export class ConditionDefinitionUpdateComponent implements OnInit {
       description: conditionDefinition.description,
       createdBy: conditionDefinition.createdBy,
       createdAt: conditionDefinition.createdAt ? conditionDefinition.createdAt.format(DATE_TIME_FORMAT) : null,
-      lastUpdatedBy: conditionDefinition.lastUpdatedBy,
+      lastModifiedBy: conditionDefinition.lastModifiedBy,
       lastUpdatedAt: conditionDefinition.lastUpdatedAt ? conditionDefinition.lastUpdatedAt.format(DATE_TIME_FORMAT) : null,
       priceList: conditionDefinition.priceList,
     });
@@ -87,7 +87,7 @@ export class ConditionDefinitionUpdateComponent implements OnInit {
       description: this.editForm.get(['description'])!.value,
       createdBy: this.editForm.get(['createdBy'])!.value,
       createdAt: this.editForm.get(['createdAt'])!.value ? moment(this.editForm.get(['createdAt'])!.value, DATE_TIME_FORMAT) : undefined,
-      lastUpdatedBy: this.editForm.get(['lastUpdatedBy'])!.value,
+      lastModifiedBy: this.editForm.get(['lastModifiedBy'])!.value,
       lastUpdatedAt: this.editForm.get(['lastUpdatedAt'])!.value
         ? moment(this.editForm.get(['lastUpdatedAt'])!.value, DATE_TIME_FORMAT)
         : undefined,

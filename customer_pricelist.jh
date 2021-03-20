@@ -4,7 +4,7 @@ entity PriceList {
     type String,
     createdBy String,
     createdAt ZonedDateTime,
-    lastUpdatedBy String,
+    lastModifiedBy String,
     lastUpdatedAt ZonedDateTime
 }
 
@@ -13,7 +13,7 @@ entity Deduction {
     price BigDecimal,
     createdBy String,
     createdAt ZonedDateTime,
-    lastUpdatedBy String,
+    lastModifiedBy String,
     lastUpdatedAt ZonedDateTime
 }
 
@@ -22,7 +22,7 @@ entity PartSale {
     price BigDecimal,
     createdBy String,
     createdAt ZonedDateTime,
-    lastUpdatedBy String,
+    lastModifiedBy String,
     lastUpdatedAt ZonedDateTime
 }
 
@@ -31,7 +31,7 @@ entity ConditionDefinition {
     description String,
     createdBy String,
     createdAt ZonedDateTime,
-    lastUpdatedBy String,
+    lastModifiedBy String,
     lastUpdatedAt ZonedDateTime
 }
 
@@ -41,7 +41,7 @@ entity Price {
     price BigDecimal,
     createdBy String,
     createdAt ZonedDateTime,
-    lastUpdatedBy String,
+    lastModifiedBy String,
     lastUpdatedAt ZonedDateTime
 }
 
@@ -49,7 +49,7 @@ entity Customer {
 	name String,
     createdBy String,
     createdAt ZonedDateTime,
-    lastUpdatedBy String,
+    lastModifiedBy String,
     lastUpdatedAt ZonedDateTime
 }
 

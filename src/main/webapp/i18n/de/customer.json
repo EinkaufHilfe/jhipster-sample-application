@@ -19,7 +19,7 @@
       "name": "Name",
       "createdBy": "Created By",
       "createdAt": "Created At",
-      "lastUpdatedBy": "Last Updated By",
+      "lastModifiedBy": "Last Updated By",
       "lastUpdatedAt": "Last Updated At",
       "priceList": "Price List"
     }

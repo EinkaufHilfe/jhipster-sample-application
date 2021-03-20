@@ -7,7 +7,7 @@ export interface IPartSale {
   price?: number;
   createdBy?: string;
   createdAt?: Moment;
-  lastUpdatedBy?: string;
+  lastModifiedBy?: string;
   lastUpdatedAt?: Moment;
   priceList?: IPriceList;
 }
@@ -19,7 +19,7 @@ export class PartSale implements IPartSale {
     public price?: number,
     public createdBy?: string,
     public createdAt?: Moment,
-    public lastUpdatedBy?: string,
+    public lastModifiedBy?: string,
     public lastUpdatedAt?: Moment,
     public priceList?: IPriceList
   ) {}

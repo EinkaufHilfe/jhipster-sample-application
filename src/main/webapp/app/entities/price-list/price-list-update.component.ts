@@ -29,7 +29,7 @@ export class PriceListUpdateComponent implements OnInit {
     type: [],
     createdBy: [],
     createdAt: [],
-    lastUpdatedBy: [],
+    lastModifiedBy: [],
     lastUpdatedAt: [],
     customer: [],
   });
@@ -63,7 +63,7 @@ export class PriceListUpdateComponent implements OnInit {
       type: priceList.type,
       createdBy: priceList.createdBy,
       createdAt: priceList.createdAt ? priceList.createdAt.format(DATE_TIME_FORMAT) : null,
-      lastUpdatedBy: priceList.lastUpdatedBy,
+      lastModifiedBy: priceList.lastModifiedBy,
       lastUpdatedAt: priceList.lastUpdatedAt ? priceList.lastUpdatedAt.format(DATE_TIME_FORMAT) : null,
       customer: priceList.customer,
     });
@@ -92,7 +92,7 @@ export class PriceListUpdateComponent implements OnInit {
       type: this.editForm.get(['type'])!.value,
       createdBy: this.editForm.get(['createdBy'])!.value,
       createdAt: this.editForm.get(['createdAt'])!.value ? moment(this.editForm.get(['createdAt'])!.value, DATE_TIME_FORMAT) : undefined,
-      lastUpdatedBy: this.editForm.get(['lastUpdatedBy'])!.value,
+      lastModifiedBy: this.editForm.get(['lastModifiedBy'])!.value,
       lastUpdatedAt: this.editForm.get(['lastUpdatedAt'])!.value
         ? moment(this.editForm.get(['lastUpdatedAt'])!.value, DATE_TIME_FORMAT)
         : undefined,

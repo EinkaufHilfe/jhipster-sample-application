@@ -27,7 +27,7 @@
                     <th scope="col" ><span jhiTranslate="application.conditionDefinition.description">Description</span></th>
                     <th scope="col" ><span jhiTranslate="application.conditionDefinition.createdBy">Created By</span></th>
                     <th scope="col" ><span jhiTranslate="application.conditionDefinition.createdAt">Created At</span></th>
-                    <th scope="col" ><span jhiTranslate="application.conditionDefinition.lastUpdatedBy">Last Updated By</span></th>
+                    <th scope="col" ><span jhiTranslate="application.conditionDefinition.lastModifiedBy">Last Updated By</span></th>
                     <th scope="col" ><span jhiTranslate="application.conditionDefinition.lastUpdatedAt">Last Updated At</span></th>
                     <th scope="col" ><span jhiTranslate="application.conditionDefinition.priceList">Price List</span></th>
                     <th scope="col"></th>
@@ -40,7 +40,7 @@
                     <td>{{ conditionDefinition.description }}</td>
                     <td>{{ conditionDefinition.createdBy }}</td>
                     <td>{{ conditionDefinition.createdAt | date:'medium' }}</td>
-                    <td>{{ conditionDefinition.lastUpdatedBy }}</td>
+                    <td>{{ conditionDefinition.lastModifiedBy }}</td>
                     <td>{{ conditionDefinition.lastUpdatedAt | date:'medium' }}</td>
                     <td>
                         <div *ngIf="conditionDefinition.priceList">

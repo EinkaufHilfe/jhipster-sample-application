@@ -18,7 +18,7 @@
       "fieldType": "ZonedDateTime"
     },
     {
-      "fieldName": "lastUpdatedBy",
+      "fieldName": "lastModifiedBy",
       "fieldType": "String"
     },
     {
