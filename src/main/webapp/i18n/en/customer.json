@@ -18,9 +18,9 @@
       },
       "name": "Name",
       "createdBy": "Created By",
-      "createdDate": "Created At",
+      "createdDate": "Created Date",
       "lastModifiedBy": "Last Modified By",
-      "lastModifiedDate": "Last Modified At",
+      "lastModifiedDate": "Last Modified Date",
       "priceList": "Price List"
     }
   }
