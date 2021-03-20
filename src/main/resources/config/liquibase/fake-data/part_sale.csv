@@ -1,4 +1,4 @@
-id;name;price;created_by;created_at;last_updated_by;last_updated_at
+id;name;price;created_by;created_date;last_modified_by;last_modified_date
 1;cultivate Multi-channelled;92547;Intranet;2021-03-13T21:32:38;Corporate reboot;2021-03-14T15:40:28
 2;grey Directives;81136;target;2021-03-14T01:02:03;Borders Liberia Program;2021-03-14T03:04:26
 3;lavender Money Market Account;88008;Bedfordshire;2021-03-14T12:23:47;Books;2021-03-14T01:50:43

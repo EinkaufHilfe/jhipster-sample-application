@@ -24,13 +24,13 @@
             <column name="created_by" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="created_at" type="datetime">
+            <column name="created_date" type="datetime">
                 <constraints nullable="true" />
             </column>
-            <column name="last_updated_by" type="varchar(255)">
+            <column name="last_modified_by" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="last_updated_at" type="datetime">
+            <column name="last_modified_date" type="datetime">
                 <constraints nullable="true" />
             </column>
             <column name="price_list_id" type="bigint">
@@ -38,8 +38,8 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
-        <dropDefaultValue tableName="part_sale" columnName="created_at" columnDataType="datetime"/>
-        <dropDefaultValue tableName="part_sale" columnName="last_updated_at" columnDataType="datetime"/>
+        <dropDefaultValue tableName="part_sale" columnName="created_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="part_sale" columnName="last_modified_date" columnDataType="datetime"/>
     </changeSet>
 
     <changeSet id="20210314182754-1-relations" author="system">
@@ -64,9 +64,9 @@
             <column name="name" type="string"/>
             <column name="price" type="numeric"/>
             <column name="created_by" type="string"/>
-            <column name="created_at" type="datetime"/>
-            <column name="last_updated_by" type="string"/>
-            <column name="last_updated_at" type="datetime"/>
+            <column name="created_date" type="datetime"/>
+            <column name="last_modified_by" type="string"/>
+            <column name="last_modified_date" type="datetime"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>
