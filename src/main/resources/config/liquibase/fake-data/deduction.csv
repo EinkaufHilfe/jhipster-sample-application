@@ -1,4 +1,4 @@
-id;reason;price;created_by;created_at;last_updated_by;last_updated_at
+id;reason;price;created_by;created_date;last_modified_by;last_modified_date
 1;Chief;99263;plug-and-play;2021-03-14T07:19:11;methodical;2021-03-14T01:21:05
 2;bottom-line orange;27678;Chief;2021-03-14T06:22:48;parallelism;2021-03-14T03:16:43
 3;TCP Cotton;59093;Identity;2021-03-13T21:29:47;Plastic;2021-03-13T19:32:41

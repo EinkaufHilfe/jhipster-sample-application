@@ -1,9 +1,21 @@
 package com.mycompany.myapp.web.rest;
 
+import static com.mycompany.myapp.web.rest.TestUtil.sameInstant;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.hasItem;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
 import com.mycompany.myapp.JhipsterSampleApplicationApp;
 import com.mycompany.myapp.domain.Deduction;
 import com.mycompany.myapp.repository.DeductionRepository;
-
+import java.math.BigDecimal;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.util.List;
+import javax.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,19 +25,6 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
-import javax.persistence.EntityManager;
-import java.math.BigDecimal;
-import java.time.Instant;
-import java.time.ZonedDateTime;
-import java.time.ZoneOffset;
-import java.time.ZoneId;
-import java.util.List;
-
-import static com.mycompany.myapp.web.rest.TestUtil.sameInstant;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.hasItem;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
  * Integration tests for the {@link DeductionResource} REST controller.
@@ -34,7 +33,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @WithMockUser
 public class DeductionResourceIT {
-
     private static final String DEFAULT_REASON = "AAAAAAAAAA";
     private static final String UPDATED_REASON = "BBBBBBBBBB";
 
@@ -71,15 +69,10 @@ public class DeductionResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Deduction createEntity(EntityManager em) {
-        Deduction deduction = new Deduction()
-            .reason(DEFAULT_REASON)
-            .price(DEFAULT_PRICE)
-            .createdBy(DEFAULT_CREATED_BY)
-            .createdAt(DEFAULT_CREATED_AT)
-            .lastUpdatedBy(DEFAULT_LAST_UPDATED_BY)
-            .lastUpdatedAt(DEFAULT_LAST_UPDATED_AT);
+        Deduction deduction = new Deduction().reason(DEFAULT_REASON).price(DEFAULT_PRICE);
         return deduction;
     }
+
     /**
      * Create an updated entity for this test.
      *
@@ -87,13 +80,7 @@ public class DeductionResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Deduction createUpdatedEntity(EntityManager em) {
-        Deduction deduction = new Deduction()
-            .reason(UPDATED_REASON)
-            .price(UPDATED_PRICE)
-            .createdBy(UPDATED_CREATED_BY)
-            .createdAt(UPDATED_CREATED_AT)
-            .lastUpdatedBy(UPDATED_LAST_UPDATED_BY)
-            .lastUpdatedAt(UPDATED_LAST_UPDATED_AT);
+        Deduction deduction = new Deduction().reason(UPDATED_REASON).price(UPDATED_PRICE);
         return deduction;
     }
 
@@ -107,9 +94,8 @@ public class DeductionResourceIT {
     public void createDeduction() throws Exception {
         int databaseSizeBeforeCreate = deductionRepository.findAll().size();
         // Create the Deduction
-        restDeductionMockMvc.perform(post("/api/deductions")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(deduction)))
+        restDeductionMockMvc
+            .perform(post("/api/deductions").contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(deduction)))
             .andExpect(status().isCreated());
 
         // Validate the Deduction in the database
@@ -119,9 +105,6 @@ public class DeductionResourceIT {
         assertThat(testDeduction.getReason()).isEqualTo(DEFAULT_REASON);
         assertThat(testDeduction.getPrice()).isEqualTo(DEFAULT_PRICE);
         assertThat(testDeduction.getCreatedBy()).isEqualTo(DEFAULT_CREATED_BY);
-        assertThat(testDeduction.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
-        assertThat(testDeduction.getLastUpdatedBy()).isEqualTo(DEFAULT_LAST_UPDATED_BY);
-        assertThat(testDeduction.getLastUpdatedAt()).isEqualTo(DEFAULT_LAST_UPDATED_AT);
     }
 
     @Test
@@ -133,16 +116,14 @@ public class DeductionResourceIT {
         deduction.setId(1L);
 
         // An entity with an existing ID cannot be created, so this API call must fail
-        restDeductionMockMvc.perform(post("/api/deductions")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(deduction)))
+        restDeductionMockMvc
+            .perform(post("/api/deductions").contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(deduction)))
             .andExpect(status().isBadRequest());
 
         // Validate the Deduction in the database
         List<Deduction> deductionList = deductionRepository.findAll();
         assertThat(deductionList).hasSize(databaseSizeBeforeCreate);
     }
-
 
     @Test
     @Transactional
@@ -151,7 +132,8 @@ public class DeductionResourceIT {
         deductionRepository.saveAndFlush(deduction);
 
         // Get all the deductionList
-        restDeductionMockMvc.perform(get("/api/deductions?sort=id,desc"))
+        restDeductionMockMvc
+            .perform(get("/api/deductions?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(deduction.getId().intValue())))
@@ -162,7 +144,7 @@ public class DeductionResourceIT {
             .andExpect(jsonPath("$.[*].lastUpdatedBy").value(hasItem(DEFAULT_LAST_UPDATED_BY)))
             .andExpect(jsonPath("$.[*].lastUpdatedAt").value(hasItem(sameInstant(DEFAULT_LAST_UPDATED_AT))));
     }
-    
+
     @Test
     @Transactional
     public void getDeduction() throws Exception {
@@ -170,7 +152,8 @@ public class DeductionResourceIT {
         deductionRepository.saveAndFlush(deduction);
 
         // Get the deduction
-        restDeductionMockMvc.perform(get("/api/deductions/{id}", deduction.getId()))
+        restDeductionMockMvc
+            .perform(get("/api/deductions/{id}", deduction.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(deduction.getId().intValue()))
@@ -181,12 +164,12 @@ public class DeductionResourceIT {
             .andExpect(jsonPath("$.lastUpdatedBy").value(DEFAULT_LAST_UPDATED_BY))
             .andExpect(jsonPath("$.lastUpdatedAt").value(sameInstant(DEFAULT_LAST_UPDATED_AT)));
     }
+
     @Test
     @Transactional
     public void getNonExistingDeduction() throws Exception {
         // Get the deduction
-        restDeductionMockMvc.perform(get("/api/deductions/{id}", Long.MAX_VALUE))
-            .andExpect(status().isNotFound());
+        restDeductionMockMvc.perform(get("/api/deductions/{id}", Long.MAX_VALUE)).andExpect(status().isNotFound());
     }
 
     @Test
@@ -201,17 +184,12 @@ public class DeductionResourceIT {
         Deduction updatedDeduction = deductionRepository.findById(deduction.getId()).get();
         // Disconnect from session so that the updates on updatedDeduction are not directly saved in db
         em.detach(updatedDeduction);
-        updatedDeduction
-            .reason(UPDATED_REASON)
-            .price(UPDATED_PRICE)
-            .createdBy(UPDATED_CREATED_BY)
-            .createdAt(UPDATED_CREATED_AT)
-            .lastUpdatedBy(UPDATED_LAST_UPDATED_BY)
-            .lastUpdatedAt(UPDATED_LAST_UPDATED_AT);
+        updatedDeduction.reason(UPDATED_REASON).price(UPDATED_PRICE);
 
-        restDeductionMockMvc.perform(put("/api/deductions")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(updatedDeduction)))
+        restDeductionMockMvc
+            .perform(
+                put("/api/deductions").contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(updatedDeduction))
+            )
             .andExpect(status().isOk());
 
         // Validate the Deduction in the database
@@ -221,9 +199,6 @@ public class DeductionResourceIT {
         assertThat(testDeduction.getReason()).isEqualTo(UPDATED_REASON);
         assertThat(testDeduction.getPrice()).isEqualTo(UPDATED_PRICE);
         assertThat(testDeduction.getCreatedBy()).isEqualTo(UPDATED_CREATED_BY);
-        assertThat(testDeduction.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
-        assertThat(testDeduction.getLastUpdatedBy()).isEqualTo(UPDATED_LAST_UPDATED_BY);
-        assertThat(testDeduction.getLastUpdatedAt()).isEqualTo(UPDATED_LAST_UPDATED_AT);
     }
 
     @Test
@@ -232,9 +207,8 @@ public class DeductionResourceIT {
         int databaseSizeBeforeUpdate = deductionRepository.findAll().size();
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
-        restDeductionMockMvc.perform(put("/api/deductions")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(deduction)))
+        restDeductionMockMvc
+            .perform(put("/api/deductions").contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(deduction)))
             .andExpect(status().isBadRequest());
 
         // Validate the Deduction in the database
@@ -251,8 +225,8 @@ public class DeductionResourceIT {
         int databaseSizeBeforeDelete = deductionRepository.findAll().size();
 
         // Delete the deduction
-        restDeductionMockMvc.perform(delete("/api/deductions/{id}", deduction.getId())
-            .accept(MediaType.APPLICATION_JSON))
+        restDeductionMockMvc
+            .perform(delete("/api/deductions/{id}", deduction.getId()).accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isNoContent());
 
         // Validate the database contains one less item
