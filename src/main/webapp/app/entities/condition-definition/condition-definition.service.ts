@@ -52,9 +52,9 @@ export class ConditionDefinitionService {
     const copy: IConditionDefinition = Object.assign({}, conditionDefinition, {
       createdDate:
         conditionDefinition.createdDate && conditionDefinition.createdDate.isValid() ? conditionDefinition.createdDate.toJSON() : undefined,
-      lastUpdatedAt:
-        conditionDefinition.lastUpdatedAt && conditionDefinition.lastUpdatedAt.isValid()
-          ? conditionDefinition.lastUpdatedAt.toJSON()
+      lastModifiedDate:
+        conditionDefinition.lastModifiedDate && conditionDefinition.lastModifiedDate.isValid()
+          ? conditionDefinition.lastModifiedDate.toJSON()
           : undefined,
     });
     return copy;
@@ -63,7 +63,7 @@ export class ConditionDefinitionService {
   protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
     if (res.body) {
       res.body.createdDate = res.body.createdDate ? moment(res.body.createdDate) : undefined;
-      res.body.lastUpdatedAt = res.body.lastUpdatedAt ? moment(res.body.lastUpdatedAt) : undefined;
+      res.body.lastModifiedDate = res.body.lastModifiedDate ? moment(res.body.lastModifiedDate) : undefined;
     }
     return res;
   }
@@ -72,7 +72,9 @@ export class ConditionDefinitionService {
     if (res.body) {
       res.body.forEach((conditionDefinition: IConditionDefinition) => {
         conditionDefinition.createdDate = conditionDefinition.createdDate ? moment(conditionDefinition.createdDate) : undefined;
-        conditionDefinition.lastUpdatedAt = conditionDefinition.lastUpdatedAt ? moment(conditionDefinition.lastUpdatedAt) : undefined;
+        conditionDefinition.lastModifiedDate = conditionDefinition.lastModifiedDate
+          ? moment(conditionDefinition.lastModifiedDate)
+          : undefined;
       });
     }
     return res;

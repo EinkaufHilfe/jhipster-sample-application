@@ -9,7 +9,7 @@ export interface IPrice {
   createdBy?: string;
   createdDate?: Moment;
   lastModifiedBy?: string;
-  lastUpdatedAt?: Moment;
+  lastModifiedDate?: Moment;
   priceList?: IPriceList;
 }
 
@@ -22,7 +22,7 @@ export class Price implements IPrice {
     public createdBy?: string,
     public createdDate?: Moment,
     public lastModifiedBy?: string,
-    public lastUpdatedAt?: Moment,
+    public lastModifiedDate?: Moment,
     public priceList?: IPriceList
   ) {}
 }

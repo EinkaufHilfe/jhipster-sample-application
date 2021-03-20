@@ -29,7 +29,7 @@
                     <th scope="col" ><span jhiTranslate="application.priceList.createdBy">Created By</span></th>
                     <th scope="col" ><span jhiTranslate="application.priceList.createdDate">Created At</span></th>
                     <th scope="col" ><span jhiTranslate="application.priceList.lastModifiedBy">Last Updated By</span></th>
-                    <th scope="col" ><span jhiTranslate="application.priceList.lastUpdatedAt">Last Updated At</span></th>
+                    <th scope="col" ><span jhiTranslate="application.priceList.lastModifiedDate">Last Updated At</span></th>
                     <th scope="col" ><span jhiTranslate="application.priceList.customer">Customer</span></th>
                     <th scope="col"></th>
                 </tr>
@@ -43,7 +43,7 @@
                     <td>{{ priceList.createdBy }}</td>
                     <td>{{ priceList.createdDate | date:'medium' }}</td>
                     <td>{{ priceList.lastModifiedBy }}</td>
-                    <td>{{ priceList.lastUpdatedAt | date:'medium' }}</td>
+                    <td>{{ priceList.lastModifiedDate | date:'medium' }}</td>
                     <td>
                         <div *ngIf="priceList.customer">
                             <a [routerLink]="['/customer', priceList.customer?.id, 'view']" >{{ priceList.customer?.id }}</a>

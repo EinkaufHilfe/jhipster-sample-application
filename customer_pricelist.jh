@@ -5,7 +5,7 @@ entity PriceList {
     createdBy String,
     createdDate ZonedDateTime,
     lastModifiedBy String,
-    lastUpdatedAt ZonedDateTime
+    lastModifiedDate ZonedDateTime
 }
 
 entity Deduction {
@@ -14,7 +14,7 @@ entity Deduction {
     createdBy String,
     createdDate ZonedDateTime,
     lastModifiedBy String,
-    lastUpdatedAt ZonedDateTime
+    lastModifiedDate ZonedDateTime
 }
 
 entity PartSale {
@@ -23,7 +23,7 @@ entity PartSale {
     createdBy String,
     createdDate ZonedDateTime,
     lastModifiedBy String,
-    lastUpdatedAt ZonedDateTime
+    lastModifiedDate ZonedDateTime
 }
 
 entity ConditionDefinition {
@@ -32,7 +32,7 @@ entity ConditionDefinition {
     createdBy String,
     createdDate ZonedDateTime,
     lastModifiedBy String,
-    lastUpdatedAt ZonedDateTime
+    lastModifiedDate ZonedDateTime
 }
 
 entity Price {
@@ -42,7 +42,7 @@ entity Price {
     createdBy String,
     createdDate ZonedDateTime,
     lastModifiedBy String,
-    lastUpdatedAt ZonedDateTime
+    lastModifiedDate ZonedDateTime
 }
 
 entity Customer {
@@ -50,7 +50,7 @@ entity Customer {
     createdBy String,
     createdDate ZonedDateTime,
     lastModifiedBy String,
-    lastUpdatedAt ZonedDateTime
+    lastModifiedDate ZonedDateTime
 }
 
 relationship OneToMany {

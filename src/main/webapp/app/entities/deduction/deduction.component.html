@@ -28,7 +28,7 @@
                     <th scope="col" ><span jhiTranslate="application.deduction.createdBy">Created By</span></th>
                     <th scope="col" ><span jhiTranslate="application.deduction.createdDate">Created At</span></th>
                     <th scope="col" ><span jhiTranslate="application.deduction.lastModifiedBy">Last Updated By</span></th>
-                    <th scope="col" ><span jhiTranslate="application.deduction.lastUpdatedAt">Last Updated At</span></th>
+                    <th scope="col" ><span jhiTranslate="application.deduction.lastModifiedDate">Last Updated At</span></th>
                     <th scope="col" ><span jhiTranslate="application.deduction.priceList">Price List</span></th>
                     <th scope="col"></th>
                 </tr>
@@ -41,7 +41,7 @@
                     <td>{{ deduction.createdBy }}</td>
                     <td>{{ deduction.createdDate | date:'medium' }}</td>
                     <td>{{ deduction.lastModifiedBy }}</td>
-                    <td>{{ deduction.lastUpdatedAt | date:'medium' }}</td>
+                    <td>{{ deduction.lastModifiedDate | date:'medium' }}</td>
                     <td>
                         <div *ngIf="deduction.priceList">
                             <a [routerLink]="['/price-list', deduction.priceList?.id, 'view']" >{{ deduction.priceList?.id }}</a>

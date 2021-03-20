@@ -27,7 +27,7 @@ export class DeductionUpdateComponent implements OnInit {
     createdBy: [],
     createdDate: [],
     lastModifiedBy: [],
-    lastUpdatedAt: [],
+    lastModifiedDate: [],
     priceList: [],
   });
 
@@ -43,7 +43,7 @@ export class DeductionUpdateComponent implements OnInit {
       if (!deduction.id) {
         const today = moment().startOf('day');
         deduction.createdDate = today;
-        deduction.lastUpdatedAt = today;
+        deduction.lastModifiedDate = today;
       }
 
       this.updateForm(deduction);
@@ -60,7 +60,7 @@ export class DeductionUpdateComponent implements OnInit {
       createdBy: deduction.createdBy,
       createdDate: deduction.createdDate ? deduction.createdDate.format(DATE_TIME_FORMAT) : null,
       lastModifiedBy: deduction.lastModifiedBy,
-      lastUpdatedAt: deduction.lastUpdatedAt ? deduction.lastUpdatedAt.format(DATE_TIME_FORMAT) : null,
+      lastModifiedDate: deduction.lastModifiedDate ? deduction.lastModifiedDate.format(DATE_TIME_FORMAT) : null,
       priceList: deduction.priceList,
     });
   }
@@ -90,8 +90,8 @@ export class DeductionUpdateComponent implements OnInit {
         ? moment(this.editForm.get(['createdDate'])!.value, DATE_TIME_FORMAT)
         : undefined,
       lastModifiedBy: this.editForm.get(['lastModifiedBy'])!.value,
-      lastUpdatedAt: this.editForm.get(['lastUpdatedAt'])!.value
-        ? moment(this.editForm.get(['lastUpdatedAt'])!.value, DATE_TIME_FORMAT)
+      lastModifiedDate: this.editForm.get(['lastModifiedDate'])!.value
+        ? moment(this.editForm.get(['lastModifiedDate'])!.value, DATE_TIME_FORMAT)
         : undefined,
       priceList: this.editForm.get(['priceList'])!.value,
     };

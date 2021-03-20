@@ -27,7 +27,7 @@
                     <th scope="col" ><span jhiTranslate="application.customer.createdBy">Created By</span></th>
                     <th scope="col" ><span jhiTranslate="application.customer.createdDate">Created At</span></th>
                     <th scope="col" ><span jhiTranslate="application.customer.lastModifiedBy">Last Updated By</span></th>
-                    <th scope="col" ><span jhiTranslate="application.customer.lastUpdatedAt">Last Updated At</span></th>
+                    <th scope="col" ><span jhiTranslate="application.customer.lastModifiedDate">Last Updated At</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -38,7 +38,7 @@
                     <td>{{ customer.createdBy }}</td>
                     <td>{{ customer.createdDate | date:'medium' }}</td>
                     <td>{{ customer.lastModifiedBy }}</td>
-                    <td>{{ customer.lastUpdatedAt | date:'medium' }}</td>
+                    <td>{{ customer.lastModifiedDate | date:'medium' }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

@@ -32,7 +32,7 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             createdDate: currentDate.format(DATE_TIME_FORMAT),
-            lastUpdatedAt: currentDate.format(DATE_TIME_FORMAT),
+            lastModifiedDate: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
@@ -49,7 +49,7 @@ describe('Service Tests', () => {
           {
             id: 0,
             createdDate: currentDate.format(DATE_TIME_FORMAT),
-            lastUpdatedAt: currentDate.format(DATE_TIME_FORMAT),
+            lastModifiedDate: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
@@ -57,7 +57,7 @@ describe('Service Tests', () => {
         const expected = Object.assign(
           {
             createdDate: currentDate,
-            lastUpdatedAt: currentDate,
+            lastModifiedDate: currentDate,
           },
           returnedFromService
         );
@@ -77,7 +77,7 @@ describe('Service Tests', () => {
             createdBy: 'BBBBBB',
             createdDate: currentDate.format(DATE_TIME_FORMAT),
             lastModifiedBy: 'BBBBBB',
-            lastUpdatedAt: currentDate.format(DATE_TIME_FORMAT),
+            lastModifiedDate: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
@@ -85,7 +85,7 @@ describe('Service Tests', () => {
         const expected = Object.assign(
           {
             createdDate: currentDate,
-            lastUpdatedAt: currentDate,
+            lastModifiedDate: currentDate,
           },
           returnedFromService
         );
@@ -105,7 +105,7 @@ describe('Service Tests', () => {
             createdBy: 'BBBBBB',
             createdDate: currentDate.format(DATE_TIME_FORMAT),
             lastModifiedBy: 'BBBBBB',
-            lastUpdatedAt: currentDate.format(DATE_TIME_FORMAT),
+            lastModifiedDate: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
@@ -113,7 +113,7 @@ describe('Service Tests', () => {
         const expected = Object.assign(
           {
             createdDate: currentDate,
-            lastUpdatedAt: currentDate,
+            lastModifiedDate: currentDate,
           },
           returnedFromService
         );

@@ -34,7 +34,7 @@ describe('Service Tests', () => {
             validFrom: currentDate.format(DATE_FORMAT),
             validTill: currentDate.format(DATE_FORMAT),
             createdDate: currentDate.format(DATE_TIME_FORMAT),
-            lastUpdatedAt: currentDate.format(DATE_TIME_FORMAT),
+            lastModifiedDate: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
@@ -53,7 +53,7 @@ describe('Service Tests', () => {
             validFrom: currentDate.format(DATE_FORMAT),
             validTill: currentDate.format(DATE_FORMAT),
             createdDate: currentDate.format(DATE_TIME_FORMAT),
-            lastUpdatedAt: currentDate.format(DATE_TIME_FORMAT),
+            lastModifiedDate: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
@@ -63,7 +63,7 @@ describe('Service Tests', () => {
             validFrom: currentDate,
             validTill: currentDate,
             createdDate: currentDate,
-            lastUpdatedAt: currentDate,
+            lastModifiedDate: currentDate,
           },
           returnedFromService
         );
@@ -84,7 +84,7 @@ describe('Service Tests', () => {
             createdBy: 'BBBBBB',
             createdDate: currentDate.format(DATE_TIME_FORMAT),
             lastModifiedBy: 'BBBBBB',
-            lastUpdatedAt: currentDate.format(DATE_TIME_FORMAT),
+            lastModifiedDate: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
@@ -94,7 +94,7 @@ describe('Service Tests', () => {
             validFrom: currentDate,
             validTill: currentDate,
             createdDate: currentDate,
-            lastUpdatedAt: currentDate,
+            lastModifiedDate: currentDate,
           },
           returnedFromService
         );
@@ -115,7 +115,7 @@ describe('Service Tests', () => {
             createdBy: 'BBBBBB',
             createdDate: currentDate.format(DATE_TIME_FORMAT),
             lastModifiedBy: 'BBBBBB',
-            lastUpdatedAt: currentDate.format(DATE_TIME_FORMAT),
+            lastModifiedDate: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
@@ -125,7 +125,7 @@ describe('Service Tests', () => {
             validFrom: currentDate,
             validTill: currentDate,
             createdDate: currentDate,
-            lastUpdatedAt: currentDate,
+            lastModifiedDate: currentDate,
           },
           returnedFromService
         );

@@ -146,7 +146,7 @@ public class CustomerResourceIT {
             .andExpect(jsonPath("$.[*].createdBy").value(hasItem(DEFAULT_CREATED_BY)))
             .andExpect(jsonPath("$.[*].createdDate").value(is(notNullValue())))
             .andExpect(jsonPath("$.[*].lastModifiedBy").value(hasItem(DEFAULT_LAST_UPDATED_BY)))
-            .andExpect(jsonPath("$.[*].lastUpdatedAt").value(is(notNullValue())));
+            .andExpect(jsonPath("$.[*].lastModifiedDate").value(is(notNullValue())));
     }
 
     @Test
@@ -165,7 +165,7 @@ public class CustomerResourceIT {
             .andExpect(jsonPath("$.createdBy").value(DEFAULT_CREATED_BY))
             .andExpect(jsonPath("$.createdDate").value(is(notNullValue())))
             .andExpect(jsonPath("$.lastModifiedBy").value(DEFAULT_LAST_UPDATED_BY))
-            .andExpect(jsonPath("$.lastUpdatedAt").value(is(notNullValue())));
+            .andExpect(jsonPath("$.lastModifiedDate").value(is(notNullValue())));
     }
 
     @Test
@@ -192,7 +192,7 @@ public class CustomerResourceIT {
         //            .createdBy(UPDATED_CREATED_BY)
         //            .createdDate(UPDATED_CREATED_AT)
         //            .lastModifiedBy(UPDATED_LAST_UPDATED_BY)
-        //            .lastUpdatedAt(UPDATED_LAST_UPDATED_AT);
+        //            .lastModifiedDate(UPDATED_LAST_UPDATED_AT);
 
         restCustomerMockMvc
             .perform(

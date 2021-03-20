@@ -23,7 +23,7 @@ export class CustomerUpdateComponent implements OnInit {
     createdBy: [],
     createdDate: [],
     lastModifiedBy: [],
-    lastUpdatedAt: [],
+    lastModifiedDate: [],
   });
 
   constructor(protected customerService: CustomerService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -41,7 +41,7 @@ export class CustomerUpdateComponent implements OnInit {
       createdBy: customer.createdBy,
       createdDate: customer.createdDate ? customer.createdDate.format(DATE_TIME_FORMAT) : null,
       lastModifiedBy: customer.lastModifiedBy,
-      lastUpdatedAt: customer.lastUpdatedAt ? customer.lastUpdatedAt.format(DATE_TIME_FORMAT) : null,
+      lastModifiedDate: customer.lastModifiedDate ? customer.lastModifiedDate.format(DATE_TIME_FORMAT) : null,
     });
   }
 
@@ -69,8 +69,8 @@ export class CustomerUpdateComponent implements OnInit {
         ? moment(this.editForm.get(['createdDate'])!.value, DATE_TIME_FORMAT)
         : undefined,
       lastModifiedBy: this.editForm.get(['lastModifiedBy'])!.value,
-      lastUpdatedAt: this.editForm.get(['lastUpdatedAt'])!.value
-        ? moment(this.editForm.get(['lastUpdatedAt'])!.value, DATE_TIME_FORMAT)
+      lastModifiedDate: this.editForm.get(['lastModifiedDate'])!.value
+        ? moment(this.editForm.get(['lastModifiedDate'])!.value, DATE_TIME_FORMAT)
         : undefined,
     };
   }

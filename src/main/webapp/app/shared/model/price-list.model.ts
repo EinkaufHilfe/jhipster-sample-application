@@ -13,7 +13,7 @@ export interface IPriceList {
   createdBy?: string;
   createdDate?: Moment;
   lastModifiedBy?: string;
-  lastUpdatedAt?: Moment;
+  lastModifiedDate?: Moment;
   conditions?: IConditionDefinition[];
   deductions?: IDeduction[];
   partSales?: IPartSale[];
@@ -30,7 +30,7 @@ export class PriceList implements IPriceList {
     public createdBy?: string,
     public createdDate?: Moment,
     public lastModifiedBy?: string,
-    public lastUpdatedAt?: Moment,
+    public lastModifiedDate?: Moment,
     public conditions?: IConditionDefinition[],
     public deductions?: IDeduction[],
     public partSales?: IPartSale[],

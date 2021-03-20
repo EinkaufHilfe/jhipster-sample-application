@@ -28,7 +28,7 @@ export class PriceUpdateComponent implements OnInit {
     createdBy: [],
     createdDate: [],
     lastModifiedBy: [],
-    lastUpdatedAt: [],
+    lastModifiedDate: [],
     priceList: [],
   });
 
@@ -44,7 +44,7 @@ export class PriceUpdateComponent implements OnInit {
       if (!price.id) {
         const today = moment().startOf('day');
         price.createdDate = today;
-        price.lastUpdatedAt = today;
+        price.lastModifiedDate = today;
       }
 
       this.updateForm(price);
@@ -62,7 +62,7 @@ export class PriceUpdateComponent implements OnInit {
       createdBy: price.createdBy,
       createdDate: price.createdDate ? price.createdDate.format(DATE_TIME_FORMAT) : null,
       lastModifiedBy: price.lastModifiedBy,
-      lastUpdatedAt: price.lastUpdatedAt ? price.lastUpdatedAt.format(DATE_TIME_FORMAT) : null,
+      lastModifiedDate: price.lastModifiedDate ? price.lastModifiedDate.format(DATE_TIME_FORMAT) : null,
       priceList: price.priceList,
     });
   }
@@ -93,8 +93,8 @@ export class PriceUpdateComponent implements OnInit {
         ? moment(this.editForm.get(['createdDate'])!.value, DATE_TIME_FORMAT)
         : undefined,
       lastModifiedBy: this.editForm.get(['lastModifiedBy'])!.value,
-      lastUpdatedAt: this.editForm.get(['lastUpdatedAt'])!.value
-        ? moment(this.editForm.get(['lastUpdatedAt'])!.value, DATE_TIME_FORMAT)
+      lastModifiedDate: this.editForm.get(['lastModifiedDate'])!.value
+        ? moment(this.editForm.get(['lastModifiedDate'])!.value, DATE_TIME_FORMAT)
         : undefined,
       priceList: this.editForm.get(['priceList'])!.value,
     };

@@ -28,7 +28,7 @@
                     <th scope="col" ><span jhiTranslate="application.conditionDefinition.createdBy">Created By</span></th>
                     <th scope="col" ><span jhiTranslate="application.conditionDefinition.createdDate">Created At</span></th>
                     <th scope="col" ><span jhiTranslate="application.conditionDefinition.lastModifiedBy">Last Updated By</span></th>
-                    <th scope="col" ><span jhiTranslate="application.conditionDefinition.lastUpdatedAt">Last Updated At</span></th>
+                    <th scope="col" ><span jhiTranslate="application.conditionDefinition.lastModifiedDate">Last Updated At</span></th>
                     <th scope="col" ><span jhiTranslate="application.conditionDefinition.priceList">Price List</span></th>
                     <th scope="col"></th>
                 </tr>
@@ -41,7 +41,7 @@
                     <td>{{ conditionDefinition.createdBy }}</td>
                     <td>{{ conditionDefinition.createdDate | date:'medium' }}</td>
                     <td>{{ conditionDefinition.lastModifiedBy }}</td>
-                    <td>{{ conditionDefinition.lastUpdatedAt | date:'medium' }}</td>
+                    <td>{{ conditionDefinition.lastModifiedDate | date:'medium' }}</td>
                     <td>
                         <div *ngIf="conditionDefinition.priceList">
                             <a [routerLink]="['/price-list', conditionDefinition.priceList?.id, 'view']" >{{ conditionDefinition.priceList?.id }}</a>
