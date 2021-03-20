@@ -43,9 +43,8 @@ public class CustomerResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/customers")
-    public ResponseEntity<Customer> createCustomer(@RequestBody CustomerDTO customer) throws URISyntaxException {
-        log.debug("REST request to create Customer : {}", customer);
-        Customer result = customerService.create(customer);
+    public ResponseEntity<CustomerDTO> createCustomer(@RequestBody CustomerDTO customer) throws URISyntaxException {
+        CustomerDTO result = customerService.create(customer);
         return ResponseEntity
             .created(new URI("/api/customers/" + result.getId()))
             .headers(headerUtil.createEntityCreationAlert(true, ENTITY_NAME, result.getId().toString()))
@@ -62,7 +61,6 @@ public class CustomerResource {
      */
     @PutMapping("/customers")
     public ResponseEntity<Customer> updateCustomer(@RequestBody CustomerDTO customer) {
-        log.debug("REST request to update Customer : {}", customer);
         if (customer.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -77,7 +75,6 @@ public class CustomerResource {
      */
     @GetMapping("/customers")
     public List<CustomerDTO> getAllCustomers() {
-        log.debug("REST request to get all Customers");
         return customerService.findAll();
     }
 
@@ -88,10 +85,9 @@ public class CustomerResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the customer, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/customers/{id}")
-    public ResponseEntity<Customer> getCustomer(@PathVariable Long id) {
-        log.debug("REST request to get Customer : {}", id);
-        Optional<Customer> customer = customerService.findById(id);
-        return ResponseUtil.wrapOrNotFound(customer);
+    public ResponseEntity<CustomerDTO> getCustomer(@PathVariable Long id) {
+        CustomerDTO customer = customerService.findById(id);
+        return ResponseEntity.ok().body(customer);
     }
 
     /**
@@ -102,7 +98,6 @@ public class CustomerResource {
      */
     @DeleteMapping("/customers/{id}")
     public ResponseEntity<Void> deleteCustomer(@PathVariable Long id) {
-        log.debug("REST request to delete Customer : {}", id);
         customerService.deleteById(id);
         return ResponseEntity.noContent().headers(headerUtil.createEntityDeletionAlert(true, ENTITY_NAME, id.toString())).build();
     }

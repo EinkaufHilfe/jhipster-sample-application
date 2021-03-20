@@ -44,7 +44,6 @@ public class ConditionDefinitionResource {
     @PostMapping("/condition-definitions")
     public ResponseEntity<ConditionDefinition> createConditionDefinition(@RequestBody ConditionDefinition conditionDefinition)
         throws URISyntaxException {
-        log.debug("REST request to save ConditionDefinition : {}", conditionDefinition);
         if (conditionDefinition.getId() != null) {
             throw new BadRequestAlertException("A new conditionDefinition cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -67,7 +66,6 @@ public class ConditionDefinitionResource {
     @PutMapping("/condition-definitions")
     public ResponseEntity<ConditionDefinition> updateConditionDefinition(@RequestBody ConditionDefinition conditionDefinition)
         throws URISyntaxException {
-        log.debug("REST request to update ConditionDefinition : {}", conditionDefinition);
         if (conditionDefinition.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -85,7 +83,6 @@ public class ConditionDefinitionResource {
      */
     @GetMapping("/condition-definitions")
     public List<ConditionDefinition> getAllConditionDefinitions() {
-        log.debug("REST request to get all ConditionDefinitions");
         return conditionDefinitionRepository.findAll();
     }
 
@@ -97,7 +94,6 @@ public class ConditionDefinitionResource {
      */
     @GetMapping("/condition-definitions/{id}")
     public ResponseEntity<ConditionDefinition> getConditionDefinition(@PathVariable Long id) {
-        log.debug("REST request to get ConditionDefinition : {}", id);
         Optional<ConditionDefinition> conditionDefinition = conditionDefinitionRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(conditionDefinition);
     }
@@ -110,7 +106,6 @@ public class ConditionDefinitionResource {
      */
     @DeleteMapping("/condition-definitions/{id}")
     public ResponseEntity<Void> deleteConditionDefinition(@PathVariable Long id) {
-        log.debug("REST request to delete ConditionDefinition : {}", id);
         conditionDefinitionRepository.deleteById(id);
         return ResponseEntity.noContent().headers(headerUtil.createEntityDeletionAlert(true, ENTITY_NAME, id.toString())).build();
     }

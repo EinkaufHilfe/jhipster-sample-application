@@ -44,7 +44,6 @@ public class DeductionResource {
      */
     @PostMapping("/deductions")
     public ResponseEntity<Deduction> createDeduction(@RequestBody Deduction deduction) throws URISyntaxException {
-        log.debug("REST request to save Deduction : {}", deduction);
         if (deduction.getId() != null) {
             throw new BadRequestAlertException("A new deduction cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -65,7 +64,6 @@ public class DeductionResource {
      */
     @PutMapping("/deductions")
     public ResponseEntity<Deduction> updateDeduction(@RequestBody Deduction deduction) {
-        log.debug("REST request to update Deduction : {}", deduction);
         if (deduction.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -83,7 +81,6 @@ public class DeductionResource {
      */
     @GetMapping("/deductions")
     public List<Deduction> getAllDeductions() {
-        log.debug("REST request to get all Deductions");
         return deductionService.findAll();
     }
 
@@ -95,7 +92,6 @@ public class DeductionResource {
      */
     @GetMapping("/deductions/{id}")
     public ResponseEntity<Deduction> getDeduction(@PathVariable Long id) {
-        log.debug("REST request to get Deduction : {}", id);
         Optional<Deduction> deduction = deductionService.findById(id);
         return ResponseUtil.wrapOrNotFound(deduction);
     }
@@ -108,7 +104,6 @@ public class DeductionResource {
      */
     @DeleteMapping("/deductions/{id}")
     public ResponseEntity<Void> deleteDeduction(@PathVariable Long id) {
-        log.debug("REST request to delete Deduction : {}", id);
         deductionService.deleteById(id);
         return ResponseEntity.noContent().headers(headerUtil.createEntityDeletionAlert(true, ENTITY_NAME, id.toString())).build();
     }

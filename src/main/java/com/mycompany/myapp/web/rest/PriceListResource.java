@@ -44,7 +44,6 @@ public class PriceListResource {
      */
     @PostMapping("/price-lists")
     public ResponseEntity<PriceList> createPriceList(@RequestBody PriceList priceList) throws URISyntaxException {
-        log.debug("REST request to save PriceList : {}", priceList);
         if (priceList.getId() != null) {
             throw new BadRequestAlertException("A new priceList cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -65,7 +64,6 @@ public class PriceListResource {
      */
     @PutMapping("/price-lists")
     public ResponseEntity<PriceList> updatePriceList(@RequestBody PriceList priceList) {
-        log.debug("REST request to update PriceList : {}", priceList);
         if (priceList.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -83,7 +81,6 @@ public class PriceListResource {
      */
     @GetMapping("/price-lists")
     public List<PriceList> getAllPriceLists() {
-        log.debug("REST request to get all PriceLists");
         return priceListRepository.findAll();
     }
 
@@ -95,7 +92,6 @@ public class PriceListResource {
      */
     @GetMapping("/price-lists/{id}")
     public ResponseEntity<PriceList> getPriceList(@PathVariable Long id) {
-        log.debug("REST request to get PriceList : {}", id);
         Optional<PriceList> priceList = priceListRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(priceList);
     }
@@ -108,7 +104,6 @@ public class PriceListResource {
      */
     @DeleteMapping("/price-lists/{id}")
     public ResponseEntity<Void> deletePriceList(@PathVariable Long id) {
-        log.debug("REST request to delete PriceList : {}", id);
         priceListRepository.deleteById(id);
         return ResponseEntity.noContent().headers(headerUtil.createEntityDeletionAlert(true, ENTITY_NAME, id.toString())).build();
     }

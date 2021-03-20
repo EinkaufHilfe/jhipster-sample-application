@@ -44,7 +44,6 @@ public class PriceResource {
      */
     @PostMapping("/prices")
     public ResponseEntity<Price> createPrice(@RequestBody Price price) throws URISyntaxException {
-        log.debug("REST request to save Price : {}", price);
         if (price.getId() != null) {
             throw new BadRequestAlertException("A new price cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -65,7 +64,6 @@ public class PriceResource {
      */
     @PutMapping("/prices")
     public ResponseEntity<Price> updatePrice(@RequestBody Price price) {
-        log.debug("REST request to update Price : {}", price);
         if (price.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -80,7 +78,6 @@ public class PriceResource {
      */
     @GetMapping("/prices")
     public List<Price> getAllPrices() {
-        log.debug("REST request to get all Prices");
         return priceRepository.findAll();
     }
 
@@ -92,7 +89,6 @@ public class PriceResource {
      */
     @GetMapping("/prices/{id}")
     public ResponseEntity<Price> getPrice(@PathVariable Long id) {
-        log.debug("REST request to get Price : {}", id);
         Optional<Price> price = priceRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(price);
     }
@@ -105,7 +101,6 @@ public class PriceResource {
      */
     @DeleteMapping("/prices/{id}")
     public ResponseEntity<Void> deletePrice(@PathVariable Long id) {
-        log.debug("REST request to delete Price : {}", id);
         priceRepository.deleteById(id);
         return ResponseEntity.noContent().headers(headerUtil.createEntityDeletionAlert(true, ENTITY_NAME, id.toString())).build();
     }

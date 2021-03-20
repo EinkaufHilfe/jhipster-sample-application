@@ -7,6 +7,7 @@ import com.mycompany.myapp.service.errors.CustomerNameExistException;
 import com.mycompany.myapp.service.mapper.CustomerMapper;
 import java.util.List;
 import java.util.Optional;
+import javax.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,21 +20,21 @@ public class CustomerService {
         this.mapper = mapper;
     }
 
-    public Customer create(CustomerDTO customer) {
+    public CustomerDTO create(CustomerDTO customer) {
         if (repository.findByName(customer.getName()).isPresent()) {
             throw new CustomerNameExistException(customer.getName());
         }
         Customer newCustomer = new Customer();
         newCustomer.setName(customer.getName());
-        return repository.save(newCustomer);
+        return mapper.entityToDto(repository.save(newCustomer));
     }
 
     public Customer update(CustomerDTO customer) {
         return repository.save(new Customer());
     }
 
-    public Optional<Customer> findById(Long id) {
-        return repository.findById(id);
+    public CustomerDTO findById(Long id) {
+        return repository.findById(id).map(mapper::entityToDto).orElseThrow(() -> new EntityNotFoundException());
     }
 
     public void deleteById(Long id) {

@@ -44,7 +44,6 @@ public class PartSaleResource {
      */
     @PostMapping("/part-sales")
     public ResponseEntity<PartSale> createPartSale(@RequestBody PartSale partSale) throws URISyntaxException {
-        log.debug("REST request to save PartSale : {}", partSale);
         if (partSale.getId() != null) {
             throw new BadRequestAlertException("A new partSale cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -65,7 +64,6 @@ public class PartSaleResource {
      */
     @PutMapping("/part-sales")
     public ResponseEntity<PartSale> updatePartSale(@RequestBody PartSale partSale) {
-        log.debug("REST request to update PartSale : {}", partSale);
         if (partSale.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -80,7 +78,6 @@ public class PartSaleResource {
      */
     @GetMapping("/part-sales")
     public List<PartSale> getAllPartSales() {
-        log.debug("REST request to get all PartSales");
         return partSaleRepository.findAll();
     }
 
@@ -92,7 +89,6 @@ public class PartSaleResource {
      */
     @GetMapping("/part-sales/{id}")
     public ResponseEntity<PartSale> getPartSale(@PathVariable Long id) {
-        log.debug("REST request to get PartSale : {}", id);
         Optional<PartSale> partSale = partSaleRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(partSale);
     }
@@ -105,7 +101,6 @@ public class PartSaleResource {
      */
     @DeleteMapping("/part-sales/{id}")
     public ResponseEntity<Void> deletePartSale(@PathVariable Long id) {
-        log.debug("REST request to delete PartSale : {}", id);
         partSaleRepository.deleteById(id);
         return ResponseEntity.noContent().headers(headerUtil.createEntityDeletionAlert(true, ENTITY_NAME, id.toString())).build();
     }
