@@ -5,6 +5,7 @@ import com.mycompany.myapp.domain.User;
 import com.mycompany.myapp.service.dto.UserDTO;
 import java.util.*;
 import java.util.stream.Collectors;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,35 +14,29 @@ import org.springframework.stereotype.Service;
  * Normal mappers are generated using MapStruct, this one is hand-coded as MapStruct
  * support is still in beta, and requires a manual step with an IDE.
  */
-@Service
-public class UserMapper {
+@Component
+public class UserMapper extends EntityMapper<User, UserDTO> {
 
-    public List<UserDTO> usersToUserDTOs(List<User> users) {
-        return users.stream().filter(Objects::nonNull).map(this::userToUserDTO).collect(Collectors.toList());
+    @Override
+    public UserDTO entityToDto(User entity) {
+        return new UserDTO(entity);
     }
 
-    public UserDTO userToUserDTO(User user) {
-        return new UserDTO(user);
-    }
-
-    public List<User> userDTOsToUsers(List<UserDTO> userDTOs) {
-        return userDTOs.stream().filter(Objects::nonNull).map(this::userDTOToUser).collect(Collectors.toList());
-    }
-
-    public User userDTOToUser(UserDTO userDTO) {
-        if (userDTO == null) {
+    @Override
+    public User userDTOToUser(UserDTO dto) {
+        if (dto == null) {
             return null;
         } else {
             User user = new User();
-            user.setId(userDTO.getId());
-            user.setLogin(userDTO.getLogin());
-            user.setFirstName(userDTO.getFirstName());
-            user.setLastName(userDTO.getLastName());
-            user.setEmail(userDTO.getEmail());
-            user.setImageUrl(userDTO.getImageUrl());
-            user.setActivated(userDTO.isActivated());
-            user.setLangKey(userDTO.getLangKey());
-            Set<Authority> authorities = this.authoritiesFromStrings(userDTO.getAuthorities());
+            user.setId(dto.getId());
+            user.setLogin(dto.getLogin());
+            user.setFirstName(dto.getFirstName());
+            user.setLastName(dto.getLastName());
+            user.setEmail(dto.getEmail());
+            user.setImageUrl(dto.getImageUrl());
+            user.setActivated(dto.isActivated());
+            user.setLangKey(dto.getLangKey());
+            Set<Authority> authorities = this.authoritiesFromStrings(dto.getAuthorities());
             user.setAuthorities(authorities);
             return user;
         }

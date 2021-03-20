@@ -4,6 +4,7 @@ import com.mycompany.myapp.domain.Customer;
 import com.mycompany.myapp.repository.CustomerRepository;
 import com.mycompany.myapp.service.dto.CustomerDTO;
 import com.mycompany.myapp.service.errors.CustomerNameExistException;
+import com.mycompany.myapp.service.mapper.CustomerMapper;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
@@ -11,9 +12,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomerService {
     private final CustomerRepository repository;
+    private CustomerMapper mapper;
 
-    public CustomerService(CustomerRepository repository) {
+    public CustomerService(CustomerRepository repository, CustomerMapper mapper) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     public Customer create(CustomerDTO customer) {
@@ -37,7 +40,8 @@ public class CustomerService {
         repository.deleteById(id);
     }
 
-    public List<Customer> findAll() {
-        return repository.findAll();
+    public List<CustomerDTO> findAll() {
+        List<Customer> customers = repository.findAll();
+        return mapper.entitiesToDTOs(customers);
     }
 }

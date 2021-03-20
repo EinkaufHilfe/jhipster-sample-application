@@ -45,7 +45,7 @@ public class UserMapperTest {
         users.add(user);
         users.add(null);
 
-        List<UserDTO> userDTOS = userMapper.usersToUserDTOs(users);
+        List<UserDTO> userDTOS = userMapper.entitiesToDTOs(users);
 
         assertThat(userDTOS).isNotEmpty();
         assertThat(userDTOS).size().isEqualTo(1);
