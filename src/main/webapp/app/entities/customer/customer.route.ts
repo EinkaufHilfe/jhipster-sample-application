@@ -11,6 +11,7 @@ import { CustomerService } from './customer.service';
 import { CustomerComponent } from './customer.component';
 import { CustomerDetailComponent } from './customer-detail.component';
 import { CustomerUpdateComponent } from './customer-update.component';
+import { CustomerNewComponent } from './customer-new.component';
 
 @Injectable({ providedIn: 'root' })
 export class CustomerResolve implements Resolve<ICustomer> {
@@ -58,7 +59,7 @@ export const customerRoute: Routes = [
   },
   {
     path: 'new',
-    component: CustomerUpdateComponent,
+    component: CustomerNewComponent,
     resolve: {
       customer: CustomerResolve,
     },

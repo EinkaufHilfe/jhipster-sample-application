@@ -2,6 +2,8 @@ package com.mycompany.myapp.web.rest;
 
 import com.mycompany.myapp.domain.Customer;
 import com.mycompany.myapp.repository.CustomerRepository;
+import com.mycompany.myapp.service.CustomerService;
+import com.mycompany.myapp.service.dto.CustomerDTO;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -11,7 +13,6 @@ import java.util.List;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -29,10 +30,12 @@ public class CustomerResource {
 
     private final CustomerRepository customerRepository;
     private final HeaderUtil headerUtil;
+    private final CustomerService customerService;
 
-    public CustomerResource(CustomerRepository customerRepository, HeaderUtil headerUtil) {
+    public CustomerResource(CustomerRepository customerRepository, HeaderUtil headerUtil, CustomerService customerService) {
         this.customerRepository = customerRepository;
         this.headerUtil = headerUtil;
+        this.customerService = customerService;
     }
 
     /**
@@ -43,12 +46,9 @@ public class CustomerResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/customers")
-    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) throws URISyntaxException {
-        log.debug("REST request to save Customer : {}", customer);
-        if (customer.getId() != null) {
-            throw new BadRequestAlertException("A new customer cannot already have an ID", ENTITY_NAME, "idexists");
-        }
-        Customer result = customerRepository.save(customer);
+    public ResponseEntity<Customer> createCustomer(@RequestBody CustomerDTO customer) throws URISyntaxException {
+        log.debug("REST request to create Customer : {}", customer);
+        Customer result = customerService.save(customer);
         return ResponseEntity
             .created(new URI("/api/customers/" + result.getId()))
             .headers(headerUtil.createEntityCreationAlert(true, ENTITY_NAME, result.getId().toString()))

@@ -22,3 +22,11 @@ export class Customer implements ICustomer {
     public priceLists?: IPriceList[]
   ) {}
 }
+
+export interface INewCustomer {
+  name?: string;
+}
+
+export class NewCustomer implements INewCustomer {
+  constructor(public name?: string) {}
+}

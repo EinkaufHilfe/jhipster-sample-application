@@ -30,12 +30,6 @@ export class CustomerUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ customer }) => {
-      if (!customer.id) {
-        const today = moment().startOf('day');
-        customer.createdAt = today;
-        customer.lastUpdatedAt = today;
-      }
-
       this.updateForm(customer);
     });
   }

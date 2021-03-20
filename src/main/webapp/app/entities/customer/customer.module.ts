@@ -5,12 +5,13 @@ import { JhipsterSampleApplicationSharedModule } from 'app/shared/shared.module'
 import { CustomerComponent } from './customer.component';
 import { CustomerDetailComponent } from './customer-detail.component';
 import { CustomerUpdateComponent } from './customer-update.component';
+import { CustomerNewComponent } from './customer-new.component';
 import { CustomerDeleteDialogComponent } from './customer-delete-dialog.component';
 import { customerRoute } from './customer.route';
 
 @NgModule({
   imports: [JhipsterSampleApplicationSharedModule, RouterModule.forChild(customerRoute)],
-  declarations: [CustomerComponent, CustomerDetailComponent, CustomerUpdateComponent, CustomerDeleteDialogComponent],
+  declarations: [CustomerComponent, CustomerDetailComponent, CustomerUpdateComponent, CustomerDeleteDialogComponent, CustomerNewComponent],
   entryComponents: [CustomerDeleteDialogComponent],
 })
 export class JhipsterSampleApplicationCustomerModule {}
