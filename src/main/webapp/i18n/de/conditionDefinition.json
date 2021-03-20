@@ -20,8 +20,8 @@
       "description": "Description",
       "createdBy": "Created By",
       "createdDate": "Created At",
-      "lastModifiedBy": "Last Updated By",
-      "lastModifiedDate": "Last Updated At",
+      "lastModifiedBy": "Last Modified By",
+      "lastModifiedDate": "Last Modified At",
       "priceList": "Price List"
     }
   }
